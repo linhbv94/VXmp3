@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "id": 412859839,
+  "tag": "v1.0.0",
+  "draft": true,
+  "verifiedPackages": 2,
+  "tamperRejectedPackages": 2,
+  "assets": [
+    {
+      "name": "latest.json",
+      "size": 3414,
+      "sha256": "ec29bccadfec57857a1590ac2d3406f20f1c92db9d4fda0e0a244ba68b659ccf"
+    },
+    {
+      "name": "vxmp3_1.0.0_macos_intel.app.tar.gz",
+      "size": 7074045,
+      "sha256": "5393d9900e6ae211abb8ac9a7199ca1424d0499db88fb3f6cfafa9e88bbfaadc"
+    },
+    {
+      "name": "vxmp3_1.0.0_macos_intel.dmg",
+      "size": 7600632,
+      "sha256": "38340341df34424a8e48bec238b863a8647864b45319e775c087dfe719ec8de2"
+    },
+    {
+      "name": "vxmp3_1.0.0_macos_silicon.app.tar.gz",
+      "size": 6798047,
+      "sha256": "dfb8ae8c1e3ed130682aa3a04d2419fee70f7d62ad21223f949b0f2d47cf00da"
+    },
+    {
+      "name": "vxmp3_1.0.0_macos_silicon.dmg",
+      "size": 7270951,
+      "sha256": "2dd931b2176f36c14b9234b391b202406f9410bbe6586170e9df45129ae4bf6d"
+    }
+  ],
+  "macPackages": [
+    {
+      "platform": "silicon",
+      "architecture": "arm64",
+      "codesign": true,
+      "iconMatchesTag": true,
+      "dmgMatchesUpdater": true
+    },
+    {
+      "platform": "intel",
+      "architecture": "x86_64",
+      "codesign": true,
+      "iconMatchesTag": true,
+      "dmgMatchesUpdater": true
+    }
+  ],
+  "public": {
+    "tag": "v1.0.0",
+    "releaseUrl": "https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0",
+    "draft": false,
+    "prerelease": false,
+    "latestManifestMatches": true,
+    "legacyEndpointMatches": false,
+    "assets": [
+      {
+        "name": "latest.json",
+        "status": 200
+      },
+      {
+        "name": "vxmp3_1.0.0_macos_intel.app.tar.gz",
+        "status": 200
+      },
+      {
+        "name": "vxmp3_1.0.0_macos_intel.dmg",
+        "status": 200
+      },
+      {
+        "name": "vxmp3_1.0.0_macos_silicon.app.tar.gz",
+        "status": 200
+      },
+      {
+        "name": "vxmp3_1.0.0_macos_silicon.dmg",
+        "status": 200
+      }
+    ]
+  },
+  "releaseCommit": "85ee74dbf159fc0252c5602216409e9d036e8a7d",
+  "buildRun": 38587128740,
+  "publishRun": 38592227086,
+  "rustTestsPassed": 24,
+  "jsTestsPassed": 17,
+  "firstUploadTransientFailure": "Error updating policy; failed job retry succeeded without tag/source changes",
+  "nativeCurrentVersionCheck": true,
+  "oldToNewUpdaterE2E": false
+}

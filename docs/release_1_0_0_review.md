@@ -19,3 +19,7 @@ Ngày: 2026-10-14. Phạm vi macOS Apple Silicon/Intel; không phát hành Windo
 ## Phát hành
 
 CI đúng tag, assets/signature/tamper/icon/version/architecture và public endpoint sẽ ghi khi hoàn tất.
+
+## Kết quả public
+
+[Release1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0) stable/latest, SHA85ee74dbf159fc0252c5602216409e9d036e8a7d. Build38587128740 success sau retry job Silicon upload lỗi GitHub Error updating policy; tag/source không đổi. Publish38592227086 success. Năm assets public200, latest.json đúng1.0.0; hai signatures và tamper rejection, cả haiMac metadata/architecture/codesign/icon tại tag/DMG khớp updater đạt. Native Apple Silicon bấm kiểm tra sau publish báo “Bạn đang dùng phiên bản mới nhất.” Chưa E2Eold→new vì đây là bản public đầu tiên. [Evidence](release_1_0_0_evidence.json).
