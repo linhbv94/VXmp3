@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "id": 412859839,
   "tag": "v1.0.0",
-  "draft": true,
+  "draft": false,
   "verifiedPackages": 2,
   "tamperRejectedPackages": 2,
   "assets": [
@@ -85,5 +85,6 @@
   "jsTestsPassed": 17,
   "firstUploadTransientFailure": "Error updating policy; failed job retry succeeded without tag/source changes",
   "nativeCurrentVersionCheck": true,
-  "oldToNewUpdaterE2E": false
+  "oldToNewUpdaterE2E": false,
+  "verifiedAsDraft": true
 }
