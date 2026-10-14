@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* ==========================================================================
+   1. Dark Theme (Standard Slate Navy #0f1117 - zTools Master Theme Default)
+   ========================================================================== */
+.dark body {
+  background-color: #0f1117;
+  color: #f8fafc;
+}
+
+.dark .glass-panel {
+  background: rgba(20, 24, 33, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark .glass-dropdown {
+  background: rgba(15, 20, 28, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: #f1f5f9;
+}
+
+/* ==========================================================================
+   2. Light Theme (Adaptive Clean Studio #f8fafc)
+   ========================================================================== */
+.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+}
+
+.light .glass-dropdown {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   3. Black Theme (OLED Minimal Pure Black #000000)
+   ========================================================================== */
+.black body {
+  background-color: #000000;
+  color: #f8fafc;
+}
+
+.black .glass-panel {
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.black .glass-dropdown {
+  background: rgba(8, 8, 8, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  color: #f1f5f9;
+}
+
+/* ==========================================================================
+   4. Custom Smooth Scrollbars
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Titlebar drag region helper */
+.titlebar-drag {
+  -webkit-app-region: drag;
+}
+
+.titlebar-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* OLED surfaces retain dark text semantics and pure black canvas. */
+.black #root > div { background-color: #000; }
+.black [role="dialog"] { background-color: #080808; }
+
+/* Progress comes from audio samples/commit events. Stripes only signal activity. */
+.db-loading-fill {
+  background-image: repeating-linear-gradient(110deg, transparent 0 5px, rgba(255,255,255,.16) 5px 8px);
+  transition: width 100ms linear;
+}
+.db-indeterminate-fill { animation: db_indeterminate 1.2s linear infinite; }
+@keyframes db_indeterminate { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+@media (prefers-reduced-motion: reduce) {
+  .db-indeterminate-fill { animation: none; }
+  .db-loading-fill { transition: none; }
+}

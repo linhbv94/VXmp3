@@ -1,0 +1,22 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capability for VXmp3 main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-internal-toggle-maximize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-set-decorations",
+    "core:window:allow-minimize",
+    "core:window:allow-maximize",
+    "core:window:allow-unminimize",
+    "core:window:allow-close",
+    "opener:default",
+    "updater:default",
+    "process:allow-restart"
+  ]
+}

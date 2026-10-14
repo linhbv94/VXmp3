@@ -1,0 +1,44 @@
+[package]
+name = "vx_mp3"
+version = "1.0.0"
+description = "VXmp3 — Lossless MP3 Gain & Batch Audio Tag Editor"
+authors = ["vic"]
+edition = "2021"
+
+[lib]
+name = "vx_mp3_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset", "devtools"] }
+tauri-plugin-opener = "2"
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = "0.4"
+walkdir = "2"
+rfd = "0.15"
+regex = "1.10"
+sha2 = "0.10"
+base64 = "0.22"
+lofty = "0.21"
+symphonia = { version = "0.5", features = ["all"] }
+ebur128 = "0.1"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+cocoa = "0.26"
+objc = "0.2"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.58", features = [
+  "Win32_Foundation",
+  "Win32_System_DataExchange",
+  "Win32_System_Memory",
+  "Win32_System_Ole",
+  "Win32_UI_Shell",
+] }
