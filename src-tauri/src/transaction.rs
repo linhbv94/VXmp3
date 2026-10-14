@@ -22,6 +22,13 @@ pub(crate) fn file_sha256(path:&Path)->Result<String,String>{
     loop {let n=file.read(&mut block).map_err(|e|e.to_string())?;if n==0{break}hash.update(&block[..n]);}
     Ok(format!("{:x}",hash.finalize()))
 }
+fn source_matches(path:&Path,original:&fs::Metadata,hash:&str)->Result<bool,String>{
+    let meta=fs::symlink_metadata(path).map_err(|e|e.to_string())?;
+    if !meta.is_file()||meta.file_type().is_symlink()||meta.len()!=original.len()||meta.modified().ok()!=original.modified().ok(){return Ok(false)}
+    #[cfg(unix)] {use std::os::unix::fs::MetadataExt;if meta.dev()!=original.dev()||meta.ino()!=original.ino()||meta.nlink()!=1{return Ok(false)}}
+    Ok(file_sha256(path)?==hash)
+}
+#[cfg(test)] fn crash_point(phase:&str){if std::env::var("VXMP3_TEST_CRASH_PHASE").ok().as_deref()==Some(phase){std::process::abort()}}
 fn backup_root(journal:&Path)->PathBuf {journal.parent().unwrap_or(Path::new(".")).join("file_backups")}
 fn verified_backup(journal:&Path,state:&serde_json::Value)->Result<PathBuf,String>{
     let root=backup_root(journal).canonicalize().map_err(|e|e.to_string())?;
@@ -93,7 +100,7 @@ pub fn append_journal_entry(
     Ok(())
 }
 
-/// Thực thi Two-Phase Atomic Write an toàn tuyệt đối
+/// Thực thi Two-Phase Atomic Write với snapshot, backup và nhật ký bền vững
 /// 1. Tạo tệp tạm `<path>.tmp_<uuid>`
 /// 2. Ghi dữ liệu vào tệp tạm qua closure `writer`
 /// 3. Gọi fsync (`sync_all`)
@@ -162,7 +169,7 @@ where
 
     // 3. Kiểm định Snapshot tệp gốc trước khi ghi Journal & Rename (Chống ghi đè thay đổi bên ngoài)
     if let Ok(current_meta) = fs::metadata(orig_path) {
-        if current_meta.len() != expected_len || (expected_mtime.is_some() && current_meta.modified().ok() != expected_mtime) || file_sha256(orig_path)? != before_sha256 {
+        if current_meta.len() != expected_len || (expected_mtime.is_some() && current_meta.modified().ok() != expected_mtime) || !source_matches(orig_path,&orig_meta,&before_sha256)? {
             fs::remove_file(&temp_path).ok();
             return Err("SOURCE_CHANGED: Tệp gốc đã bị thay đổi bởi ứng dụng khác trong quá trình xử lý, hủy bỏ thao tác để bảo vệ dữ liệu".to_string());
         }
@@ -209,14 +216,16 @@ where
         ));
     }
 
+    #[cfg(test)] crash_point("prepared");
     // Revalidate after durable preparation; never replace a new external version.
-    if file_sha256(orig_path)?!=before_sha256 {let _=fs::remove_file(&temp_path);return Err("SOURCE_CHANGED: trước commit".into())}
+    if !source_matches(orig_path,&orig_meta,&before_sha256)? {let _=fs::remove_file(&temp_path);return Err("SOURCE_CHANGED: trước commit".into())}
     // 5. Atomic Rename
     if let Err(e) = fs::rename(&temp_path, orig_path) {
         fs::remove_file(&temp_path).ok();
         return Err(format!("Lỗi atomic rename: {}", e));
     }
 
+    #[cfg(test)] crash_point("renamed");
     // 6. Ghi Journal Phase COMMITTED
     let mut committed_entry = prepared_entry;
     committed_entry.phase = JournalPhase::COMMITTED;

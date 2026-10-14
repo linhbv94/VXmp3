@@ -286,3 +286,23 @@ fn final_qa_prepared_crash_blocks_new_write_and_preserves_source() {
     assert!(two_phase_atomic_commit(&f.path,&f.journal,"next","tag_edit",serde_json::json!({}),serde_json::json!({}),|file|{use std::io::Write;file.write_all(b"bad")}).is_err());
     assert_eq!(fs::read(&f.path).unwrap(),original);
 }
+
+#[test]
+#[ignore]
+fn final_qa_crash_child() {
+    use std::io::Write;
+    let root=PathBuf::from(std::env::var("VXMP3_TEST_FIXTURE").unwrap());
+    two_phase_atomic_commit(&root.join("original.bin"),&root.join("journal.jsonl"),"crash","tag_edit",serde_json::json!({}),serde_json::json!({}),|file|file.write_all(b"committed bytes")).unwrap();
+}
+#[test]
+fn final_qa_process_crash_keeps_evidence_and_blocks_replay() {
+    for phase in ["prepared","renamed"] {
+        let root=std::env::temp_dir().join(format!("vxmp3_crash_{}",Uuid::new_v4()));fs::create_dir(&root).unwrap();
+        let original=root.join("original.bin");let journal=root.join("journal.jsonl");fs::write(&original,b"original bytes").unwrap();
+        let output=std::process::Command::new(std::env::current_exe().unwrap()).args(["--exact","regression_tests::final_qa_crash_child","--ignored"]).env("VXMP3_TEST_FIXTURE",&root).env("VXMP3_TEST_CRASH_PHASE",phase).output().unwrap();
+        assert!(!output.status.success());assert_eq!(fs::read(&original).unwrap(),if phase=="prepared"{b"original bytes".as_slice()}else{b"committed bytes".as_slice()});
+        assert!(journal_settled(&journal).is_err());assert!(root.join("file_backups").read_dir().unwrap().next().is_some());
+        assert!(two_phase_atomic_commit(&original,&journal,"next","tag_edit",serde_json::json!({}),serde_json::json!({}),|file|{use std::io::Write;file.write_all(b"must not run")}).is_err());
+        fs::remove_dir_all(root).unwrap();
+    }
+}

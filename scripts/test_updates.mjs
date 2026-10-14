@@ -106,3 +106,26 @@ test('browser/dev/secondary window never invokes updater APIs', async () => {
   await controller.installUpdate();
   assert.equal(controller.snapshot().status, 'disabled');
 });
+
+
+test('unsaved changes block install before download and allow retry', async () => {
+  let blocked = true, downloads = 0, releases = 0, restarts = 0;
+  const controller = createUpdateController({enabled:true,
+    check:async()=>({version:'2.0.0',close:async()=>{},downloadAndInstall:async()=>{downloads++;}}),
+    beforeInstall:async()=>{if(blocked)throw new Error('Pending changes');},
+    installFailed:async()=>{releases++;},relaunch:async()=>{restarts++;}});
+  await controller.checkForUpdates();await controller.installUpdate();
+  assert.equal(downloads,0);assert.equal(restarts,0);assert.equal(releases,1);
+  assert.equal(controller.snapshot().status,'error');
+  blocked=false;await controller.installUpdate();
+  assert.equal(downloads,1);assert.equal(restarts,1);
+});
+
+test('failed download releases the native mutation guard', async () => {
+  let released=0;
+  const controller=createUpdateController({enabled:true,
+    check:async()=>({version:'2.0.0',close:async()=>{},downloadAndInstall:async()=>{throw new Error('Offline');}}),
+    beforeInstall:async()=>{},installFailed:async()=>{released++;},relaunch:async()=>{assert.fail('must not restart');}});
+  await controller.checkForUpdates();await controller.installUpdate();
+  assert.equal(released,1);assert.equal(controller.snapshot().status,'error');
+});
