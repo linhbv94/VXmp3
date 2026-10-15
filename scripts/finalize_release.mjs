@@ -35,7 +35,7 @@ if (publish) {
   }
 }
 
-// Read drafts by ID, normalize all URLs, and enforce the five-file layout.
+// Read drafts by ID, normalize all URLs, and enforce the six-file layout.
 process.env.RELEASE_STRICT_LAYOUT = 'true';
 await import('./validate_updater.mjs');
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
@@ -82,5 +82,5 @@ if (publish) {
   }
   console.log(`Published and publicly accessible: https://github.com/${repo}/releases/tag/${tag}`);
 } else {
-  console.log('Draft ready: both Mac signatures verified; run Publish tested release after local QA is confirmed.');
+  console.log('Draft ready: all platform signatures verified; run Publish tested release after local QA is confirmed.');
 }

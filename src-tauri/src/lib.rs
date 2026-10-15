@@ -43,18 +43,43 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                             continue;
                         }
                         let _: () = msg_send![btn, setControlSize: 1_u64];
-                        let cur: NSRect = msg_send![btn, frame];
                         let drawing_bounds: NSRect = msg_send![btn, bounds];
-                        let target_x = 8.0 + (i as f64) * 20.0;
-                        let target_y = cur.origin.y + (cur.size.height - 12.0) / 2.0;
+                        // Align against the web content toolbar, not AppKit titlebar metrics.
+                        // convertPoint handles the native parent hierarchy and flipped coordinates.
+                        let content_view: id = msg_send![ns_window, contentView];
+                        let superview: id = msg_send![btn, superview];
+                        if content_view == nil || superview == nil {
+                            continue;
+                        }
+                        let content_bounds: NSRect = msg_send![content_view, bounds];
+                        let is_flipped: BOOL = msg_send![content_view, isFlipped];
+                        // DOM flex center: (32px header − 1px bottom divider) / 2.
+                        let toolbar_center_from_top = 15.5;
+                        let toolbar_center_y = if is_flipped == YES {
+                            toolbar_center_from_top
+                        } else {
+                            content_bounds.size.height - toolbar_center_from_top
+                        };
+                        let content_center = NSPoint {
+                            x: content_bounds.origin.x + 8.0 + (i as f64) * 20.0 + 6.0,
+                            y: content_bounds.origin.y + toolbar_center_y,
+                        };
+                        let native_center: NSPoint = msg_send![superview,
+                            convertPoint: content_center fromView: content_view];
+                        let target_x = native_center.x - 6.0;
+                        let target_y = native_center.y - 6.0;
                         let target_frame = NSRect {
                             origin: NSPoint { x: target_x, y: target_y },
                             size: NSSize { width: 12.0, height: 12.0 },
                         };
                         let _: () = msg_send![btn, setFrame: target_frame];
-                        // Preserve AppKit's drawing space, scaling the native bezel to the frame.
-                        // Use its actual bounds so older macOS control sizes remain correct.
-                        let _: () = msg_send![btn, setBoundsSize: drawing_bounds.size];
+                        // AppKit's native button bounds may be rectangular (e.g. 14x16).
+                        // A square frame with rectangular bounds scales X/Y differently.
+                        // Keep an isotropic drawing space, including on repeated focus/resize.
+                        let drawing_side = drawing_bounds.size.width;
+                        let _: () = msg_send![btn, setBoundsSize: NSSize {
+                            width: drawing_side, height: drawing_side,
+                        }];
                     }
                 }
             }
