@@ -91,7 +91,7 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci --ignore-scripts
       - name: Rust safety and journal regression
-        run: cargo test --locked --lib
+        run: cargo test --locked --release --lib
         working-directory: src-tauri
       - name: Frontend state and release regression
         run: node --test scripts/test_updates.mjs scripts/test_release_automation.mjs scripts/test_recent.mjs

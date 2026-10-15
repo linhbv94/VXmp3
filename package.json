@@ -1,6 +1,6 @@
 {
   "name": "vxmp3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "VXmp3 — Tiện ích desktop xử lý thẻ nhạc hàng loạt và cân bằng âm lượng tự nhiên không suy hao chất lượng.",
   "main": "index.js",
   "type": "module",
