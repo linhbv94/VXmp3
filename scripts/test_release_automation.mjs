@@ -154,8 +154,15 @@ test('custom release CLI receives installer flags as Tauri options, not Cargo ar
   const script = workflow.match(/^\s*tauriScript:\s*(.+)$/m)?.[1]?.trim();
   assert.ok(script, 'Expected the custom src_tauri CLI wrapper');
   const [bin, ...prefix] = script.split(/\s+/);
-  const result = spawnSync(bin, [...prefix, 'build', '--', '--bundles', 'app,dmg', '--help'], {cwd:'.', encoding:'utf8', timeout:30000});
-  assert.equal(result.status, 0, result.stderr);
+  const args = [...prefix, 'build', '--', '--bundles', process.platform === 'win32' ? 'nsis' : 'app,dmg', '--help'];
+  // npm is a .cmd shim on Windows; CreateProcess cannot spawn it directly.
+  // Keep the command fixed and validated before passing it through cmd.exe.
+  assert.equal(bin, 'npm');
+  assert.deepEqual(prefix, ['run', 'tauri']);
+  const result = process.platform === 'win32'
+    ? spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', [bin, ...args].join(' ')], {cwd:'.', encoding:'utf8', timeout:30000})
+    : spawnSync(bin, args, {cwd:'.', encoding:'utf8', timeout:30000});
+  assert.equal(result.status, 0, result.error?.message || result.stderr);
   assert.match(result.stdout, /generate bundles and installers/);
   assert.match(result.stdout, /--bundles/);
 });

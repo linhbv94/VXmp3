@@ -17,3 +17,7 @@ Audio/metadata/gain dùng chung `audio_core.rs`, `metadata.rs` và `transaction.
 Đã bổ sung Windows standard runner/NSIS currentUser, manifest ba platform và layout6assets, giữ signer updater/app ID hiện hữu. Version bump1.0.1, lock name đồng bộ `vxmp3`. Notes chỉ gồm thay đổi cho người dùng.
 
 Trước publish cần CI native cả3 target, đủ6assets, signatures thật, archive/installer metadata và endpoint public sau publish. Chưa GUI Windows/Intel, chưa fresh-install Windows hoặc updater old→new trong lượt này. Không tự biến giới hạn này thành claim runtime PASS.
+
+## CI 1.0.1 — dừng, không publish
+
+Run38711624548: Windows Rust24PASS; Node16/17, test gọi npm bằng spawn trực tiếp lỗi Windows .cmd shim (status null). Dừng các jobs còn lại, giữ nguyên tag bất biến. Đã sửa harness gọi npm qua ComSpec với arguments cố định và chọn NSIS trên Windows; phát hành tiếp bằng1.0.2, không thay package/tag1.0.1.

@@ -1,6 +1,6 @@
 # Phát hành VXmp3
 
-Bản public đầu tiên: [1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0), macOS Apple Silicon và Intel. [QA và giới hạn](release_1_0_0_review.md). Đợt 1.0.1 bổ sung Windows x64 dùng engine Rust chung; trạng thái hiện tại xem [QA/checkpoint](release_1_0_1_review.md).
+Bản public đầu tiên: [1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0), macOS Apple Silicon và Intel. [QA và giới hạn](release_1_0_0_review.md). Đợt 1.0.2 bổ sung Windows x64 dùng engine Rust chung; trạng thái hiện tại xem [QA/checkpoint](release_1_0_2_review.md).
 
 ## Người dùng
 

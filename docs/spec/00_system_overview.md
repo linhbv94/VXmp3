@@ -2,7 +2,7 @@
 
 > **Tên sản phẩm:** VXmp3 (Lossless Audio Normalizer & Batch Tag Editor)  
 > **Thư mục dự án:** `vxmp3`
-> **Phiên bản tài liệu:** 1.0.1
+> **Phiên bản tài liệu:** 1.0.2
 > **Ngày cập nhật:** 2026-10-15
 > **Nền tảng mục tiêu:** macOS (Apple Silicon & Intel) + Windows 11+ (x64)  
 > **Kiến trúc phân tầng:** Kiến trúc 3 tầng phân định rõ ràng:
@@ -18,9 +18,9 @@
 
 ---
 
-## Phạm vi phát hành 1.0.1
+## Phạm vi phát hành 1.0.2
 
-Windows x64 và macOS Silicon/Intel cùng dùng engine Rust thật cho đọc/ghi thẻ, đo loudness và gain lossless. Không dùng dummy Windows theo quyết định user 2026-10-15. Windows dùng NSIS currentUser và updater hiện có; [QA/checkpoint](../release_1_0_1_review.md) phân biệt build/fixture/native GUI và giới hạn từng OS.
+Windows x64 và macOS Silicon/Intel cùng dùng engine Rust thật cho đọc/ghi thẻ, đo loudness và gain lossless. Không dùng dummy Windows theo quyết định user 2026-10-15. Windows dùng NSIS currentUser và updater hiện có; [QA/checkpoint](../release_1_0_2_review.md) phân biệt build/fixture/native GUI và giới hạn từng OS.
 
 ## 1. Bối cảnh & Tôn chỉ Sản phẩm (Product Vision)
 
