@@ -32,7 +32,7 @@ for (const entry of Object.values(manifest.platforms ?? {})) {
   assert.ok(asset && asset.size > 0, 'Updater asset is missing from release');
   entry.url = `https://github.com/${repo}/releases/download/${tag}/${encodeURIComponent(asset.name)}`;
 }
-for (const platform of ['darwin-aarch64', 'darwin-x86_64']) {
+for (const platform of ['windows-x86_64', 'darwin-aarch64', 'darwin-x86_64']) {
   const entry = manifest.platforms?.[platform];
   assert.ok(entry, `Missing platform ${platform}`);
   assert.ok(typeof entry.signature === 'string' && entry.signature.trim(), `Missing signature ${platform}`);
@@ -48,4 +48,4 @@ if (process.env.RELEASE_STRICT_LAYOUT === 'true') validateAssetLayout(config, ma
 writeFileSync(process.argv[2], JSON.stringify(manifest, null, 2) + '\n');
 const summary = `### ${config.productName} ${tag}\n\nManifest and package metadata validated. Metadata checks do not prove signatures; the finalization step verifies them separately.\n\n[Open release](https://github.com/${repo}/releases)\n`;
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-console.log('Manifest valid for macOS Apple Silicon and macOS Intel. Release remains a draft.');
+console.log('Manifest valid for Windows x64, macOS Apple Silicon and macOS Intel. Release remains a draft.');

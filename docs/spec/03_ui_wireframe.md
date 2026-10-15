@@ -174,3 +174,13 @@ Tuân thủ nghiêm ngặt quy chuẩn cấu trúc Settings tại [desktop_ui_st
 - Hai action riêng: Cân bằng cả list / Cân bằng đã chọn (N). Hoàn tác dùng icon Undo và nhãn text.
 - Cột dB hiện tại: badge số + mức; khi đo fill theo decoded frames, hiện số tạm tính + phần trăm. Cột mục tiêu: tương tự khi cân bằng, giữ số target, hiện lý do nếu giới hạn/lỗi.
 - Thanh progress tổng 2px dưới toolbar, kèm completed/total, % và bài/stage đang xử lý. Cho cuộn/view list lúc xử lý, không cho sửa metadata hoặc chạy mutation chồng.
+
+
+## Hiệu chỉnh traffic lights macOS — 2026-10-15
+
+Giữ control native và action hiện có, đường kính hiển thị 12pt, khoảng cách tâm 20pt. Frame và bounds vẽ phải cùng tỷ lệ 1:1: không sao chép nguyên bounds chữ nhật của AppKit vào frame vuông vì làm nút thành ellipse. Chuẩn hóa bounds vẽ thành hình vuông theo chiều rộng gốc; kiểm tra lại sau focus/resize. VXClick vẫn giữ chính sách ẩn Zoom của widget cố định; không đổi engine, quyền OS hoặc updater.
+
+
+### Căn tâm dọc traffic lights theo toolbar — 2026-10-15
+
+Toolbar 32px: tâm control native trùng tâm toolbar tại y=15.5pt từ đỉnh content view (vùng flex 31px sau divider dưới 1px). Chuyển điểm từ content view sang superview của nút bằng AppKit convertPoint:fromView:, xử lý cả hệ tọa độ flipped/non-flipped. Không giữ center frame native cũ hoặc suy vị trí từ chiều cao superview titlebar. Giữ frame/bounds vuông và khoảng cách tâm ngang hiện có; áp dụng lại khi focus/resize.
