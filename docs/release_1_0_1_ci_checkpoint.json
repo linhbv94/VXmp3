@@ -1,0 +1,37 @@
+{
+  "status": "queued",
+  "conclusion": "",
+  "head_sha": "70a3f15175ef5253c538f0c72a1dc39d9936985a",
+  "url": "https://github.com/linhbv94/VXmp3/actions/runs/38711624548",
+  "jobs": [
+    {
+      "name": "prepare",
+      "status": "completed",
+      "conclusion": "success",
+      "active": []
+    },
+    {
+      "name": "build (windows-2022, x86_64-pc-windows-msvc, nsis, windows_x64)",
+      "status": "in_progress",
+      "conclusion": "",
+      "active": [
+        "Rust safety and journal regression"
+      ]
+    },
+    {
+      "name": "build (macos-15, aarch64-apple-darwin, app,dmg, macos_silicon)",
+      "status": "queued",
+      "conclusion": "",
+      "active": []
+    },
+    {
+      "name": "build (macos-15-intel, x86_64-apple-darwin, app,dmg, macos_intel)",
+      "status": "queued",
+      "conclusion": "",
+      "active": []
+    }
+  ],
+  "repo": "linhbv94/VXmp3",
+  "run_id": 38711624548,
+  "observed_at_utc": "2026-10-15T09:19:00.022797+00:00"
+}

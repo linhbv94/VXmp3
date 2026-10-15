@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-15",
+  "baseline_sha256": {
+    "src/App.tsx": "1a5fd9e62550c3cb349209320c5ec9c1a5fe73c05dc93e27600d675bbff0f112",
+    "src/main.tsx": "9b5a50f084a5c7ebf0e994ef95aeabe64e1db16e862f76d6f646e8daf7251166",
+    "src/.DS_Store": "ef6f4c7ef9be1161d08952c1c1cb285e0e7bfc55e69d949cade3d3f5987e1035",
+    "src/index.css": "b347134a0d1dccea95324beb34d08932ac80c99edb69275f084d3d244c1deeea",
+    "src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "src/types/index.ts": "5e70a97cb134f418573f8493e49bf9f5578a0c22adbbe72359f08578bc6119be",
+    "src/types/audio_progress.ts": "1eeff58f36392b8287fb82a49b499a7c621b53a4ca4525dcb9e3c5e4b5d0da1d",
+    "src/components/db_level_cell.tsx": "b105103c487c45bb4a5e7cb22627b275ae37f70c85b5824b045a0d1ebbd6215d",
+    "src/components/ControlBar.tsx": "00133f2c51314bfc5573b783c38b6e2bdd056c28dcff06185a6bfc4083fd0179",
+    "src/components/window_bar.tsx": "af1c7428c12f98f77174defa939a3e1547abd4d09caa73a61551db6e73f8238b",
+    "src/components/Inspector.tsx": "ef6e5d43fcdcd4e5dbe5d907804f53bb97c543ab8b2b519b22febd7159a8b9b6",
+    "src/components/AppUpdates.tsx": "441a28e7b06e0939b953dc9ba6f1d5f96055ba726b36d061c67ac008cce4a266",
+    "src/components/recent_button.tsx": "bc3045ec21f65414f5d3dd6cda7344fd7f4839b74dc2676f436fe58d8d9511ed",
+    "src/components/MiniPlayer.tsx": "67aca7763ab5a638fd056f21182ffd5c6ea17ebd04f80e2897be324258015d54",
+    "src/components/TrackTable.tsx": "49e5e6b6800d2e12b8b10a7a4d7b51a1972f70970f919802e49bfa266062ee93",
+    "src/components/SettingsModal.tsx": "4b5efa5a1f6e8d81391f32aae5e53be28ee5dc5b0c4a9e607cbb792ce4d23b66",
+    "src/hooks/useVirtualizer.ts": "bd2ddaf6a7157a1eb3cc7ad8adc37d50661e56587ebcce007b623497afde4b6a",
+    "src/i18n/app_translations.ts": "dfd741b261444fde80114bab0962e79151dca456ceb1d87060fccd89de36c1c6",
+    "src/assets/support_qr.png": "4660252e861c2f5c1c73875885bad7ed35f35e33874da45b66782afe636b2abd",
+    "src/services/update_controller.ts": "05baafed3837a8c993cbc43358c35c78de3c2ffab6cfaf4d589248b1836f0884",
+    "src/services/recent_service.ts": "742730128bed7f6ebcf23cdeec463c66eebeef93b825dfc42f872c0112458566",
+    "src/services/app_updater.ts": "8d806780ce87fcf84b031d35b84fe6e82757e0301ba2f1b15ce51614aa88d314",
+    "src-tauri/src/transaction.rs": "3e6f5043970d70adbcb89b7b557923ac1bd55b3ba98466ae2ca34465090f0d8d",
+    "src-tauri/src/metadata.rs": "28f15e862df9c161ad9cbbb6ea800576cf888aca353400e7f494cc42fa5594b6",
+    "src-tauri/src/lib.rs": "bf3bbe364f26985113cc95403dde8745ff7cc2071a1671d7ee464f296ecb46d3",
+    "src-tauri/src/main.rs": "4ee42ac7cd5d5e4ee7bf96a15b4456f8fa82b289553f26aac67981601436d3a3",
+    "src-tauri/src/regression_tests.rs": "95c93351c456b78f609cd11e9ffd11dc645b27a24bc97b41e27a7fe41a1fbf57",
+    "src-tauri/src/audio_core.rs": "ad3fa49514b0da34631f1bf85f7951696b29a7ae7b3197263ce3a2d1352e0633",
+    "package.json": "d9c4aeabca6141d025d564d73df336e14345497851d2f9601b2a149f4b6f6cb6"
+  },
+  "changed_since_baseline": [
+    "package.json"
+  ],
+  "notes": "MP3 version/package metadata intentionally changed for release; no audio engine edits. Click production source unchanged.",
+  "native_bundle": {
+    "identifier": "com.vxmp3.qa.align20261015",
+    "version": "1.0.0",
+    "binary_sha256": "3b7262ccbccd547db36d86870a1107feb3d867233d73396e7714338351668128",
+    "profile": "debug; not for performance or release identity claims"
+  },
+  "checks": {
+    "frontend": {
+      "exit_code": 0
+    },
+    "rust": {
+      "exit_code": 0,
+      "passed": 24,
+      "ignored": 1
+    },
+    "node": {
+      "exit_code": 0,
+      "passed": 17
+    },
+    "rust_release": {
+      "exit_code": 0,
+      "passed": 24,
+      "ignored": 1
+    }
+  },
+  "native_fixture": {
+    "baseline.json": {
+      "broken.mp3": "f5edf9a0e3d4d3892aa7c3412e7af8c1df953b4e236144452160dbc9c1280b3b",
+      "tone_1.mp3": "f364a30f7e88126537aa9b4ef27e9fbeabcbacbda4e55a75eeb3b44a7eb3c5ce",
+      "tone_2.mp3": "979c104eb313f90faca1437881db7a01d130d89ca9539a169da2b023fec89050"
+    },
+    "after_gain.json": {
+      "broken.mp3": "f5edf9a0e3d4d3892aa7c3412e7af8c1df953b4e236144452160dbc9c1280b3b",
+      "tone_1.mp3": "5aaf665bb0ac82ad8c0d85e9c9b09bdfc169448135048699fdc72235eec050b0",
+      "tone_2.mp3": "8dcc7f4334a652d4ca5e2f4db591beae8364c6294e323aae465006245994c64a"
+    },
+    "after_undo.json": {
+      "broken.mp3": "f5edf9a0e3d4d3892aa7c3412e7af8c1df953b4e236144452160dbc9c1280b3b",
+      "tone_1.mp3": "f364a30f7e88126537aa9b4ef27e9fbeabcbacbda4e55a75eeb3b44a7eb3c5ce",
+      "tone_2.mp3": "979c104eb313f90faca1437881db7a01d130d89ca9539a169da2b023fec89050"
+    },
+    "reported_db_before": [
+      79.1,
+      82.1
+    ],
+    "reported_db_after": [
+      89.6,
+      89.6
+    ]
+  },
+  "release": {
+    "version": "1.0.2",
+    "tag_sha": "dca50b902e7263ae9b47855b3ba2b79944ed7340",
+    "build_run_id": 38712969405,
+    "state": "public",
+    "previous_failed_run": 38711624548,
+    "previous_tag": "v1.0.1",
+    "identity_and_updater_continuity_verified": true,
+    "windows_draft": {
+      "sha256": "093ca31f0ce97e72e19202968a26b50553e855a53f41895b1253ee53ca54da86",
+      "size": 4250511,
+      "pe_header": true,
+      "signature_verified": true,
+      "tamper_rejected": true,
+      "note": "NSIS stub PE check does not establish extracted app architecture or GUI"
+    },
+    "mac_packages": {
+      "silicon": {
+        "architecture": "0x100000c",
+        "identifier": "com.vxmp3.desktop",
+        "version": "1.0.2",
+        "binary_sha256": "68f2e67cccf8d1e796fe6e1af38f60f715858b62e209df040c9866701852a644",
+        "codesign_exit": 0,
+        "icon_matches_source": true,
+        "archive_sha256": "a0331e67027ce3c259763eac715a8c5c581bab10ab81bd7a37e52d974f279d60"
+      },
+      "intel": {
+        "architecture": "0x1000007",
+        "identifier": "com.vxmp3.desktop",
+        "version": "1.0.2",
+        "binary_sha256": "c839aadf35d485d06f69dd6f66831bd1154e0afd15765e731e3fbee2e7f111a4",
+        "codesign_exit": 0,
+        "icon_matches_source": true,
+        "archive_sha256": "ed4c4b88c0254d2851147dd61b471fd87d1c27d790adc7fcfc01f122cf2a1248"
+      }
+    },
+    "silicon_dmg_verify_exit": 0,
+    "publish_run_id": 38717639106,
+    "verified_as_draft": true,
+    "ci_conclusion": "success",
+    "all_updater_signatures_verified": true,
+    "all_updater_tamper_tests_rejected": true,
+    "intel_dmg_verify_exit": 0,
+    "assets": {
+      "vxmp3_1.0.2_macos_silicon.dmg": {
+        "size": 7271095,
+        "sha256": "abbcb2a562deb5ac739ce1de4acfaa27f41b735923cf8330159fcc4e53b7325f"
+      },
+      "vxmp3_1.0.2_macos_intel.app.tar.gz": {
+        "size": 7079559,
+        "sha256": "ed4c4b88c0254d2851147dd61b471fd87d1c27d790adc7fcfc01f122cf2a1248"
+      },
+      "vxmp3_1.0.2_macos_silicon.app.tar.gz": {
+        "size": 6798209,
+        "sha256": "a0331e67027ce3c259763eac715a8c5c581bab10ab81bd7a37e52d974f279d60"
+      },
+      "vxmp3_1.0.2_macos_intel.dmg": {
+        "size": 7611336,
+        "sha256": "58feeed5f60d09e5346845b2cafb8f761266d0d736f3c90e75d2f70dc6d1839b"
+      },
+      "vxmp3_1.0.2_windows_x64_setup.exe": {
+        "size": 4250511,
+        "sha256": "093ca31f0ce97e72e19202968a26b50553e855a53f41895b1253ee53ca54da86"
+      }
+    },
+    "publish_conclusion": "success",
+    "public_manifest_and_all_assets_http200_without_auth": true,
+    "all_package_digests_match_github": true,
+    "public_evidence": "../release_1_0_2_public_evidence.json"
+  }
+}

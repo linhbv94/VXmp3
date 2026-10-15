@@ -1,6 +1,6 @@
 # VXmp3 — Lossless Audio Normalizer & Batch Tag Editor
 
-macOS: [Tải bản1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0) · [Cài đặt và phát hành](docs/desktop_release.md) · [QA và giới hạn thực tế](docs/release_1_0_0_review.md). Các phần lộ trình bên dưới là mục tiêu, cần đối chiếu bằng chứng nghiệm thu.
+Windows x64 và macOS Apple Silicon/Intel: [Tải bản1.0.2](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.2) · [Cài đặt và phát hành](docs/desktop_release.md) · [QA và giới hạn thực tế](docs/release_1_0_2_review.md). Các phần lộ trình bên dưới là mục tiêu, cần đối chiếu bằng chứng nghiệm thu.
 
 
 > **Bộ công cụ xử lý siêu dữ liệu và chuẩn hóa âm lượng nhạc cá nhân siêu nhẹ, đa nền tảng (Windows & macOS).**  

@@ -1,0 +1,215 @@
+   Compiling objc2-exception-helper v0.1.1
+   Compiling ring v0.17.14
+   Compiling objc2 v0.6.5
+   Compiling tauri v2.12.1
+   Compiling tauri-macros v2.7.1
+   Compiling objc2-foundation v0.3.2
+   Compiling wry v0.57.0
+   Compiling tauri-plugin-opener v2.7.0
+   Compiling tauri-plugin-updater v2.13.1
+   Compiling tauri-plugin-process v2.4.0
+   Compiling rustls v0.23.45
+   Compiling rustls-webpki v0.103.15
+   Compiling block2 v0.6.2
+   Compiling objc2-core-foundation v0.3.2
+   Compiling dispatch2 v0.3.1
+   Compiling vx_mp3 v1.0.0 (/Users/vic/_Work/zTools/vxmp3/src-tauri)
+   Compiling tokio-rustls v0.26.6
+   Compiling rustls-platform-verifier v0.7.1
+   Compiling hyper-rustls v0.27.10
+   Compiling reqwest v0.13.5
+   Compiling objc2-quartz-core v0.3.2
+   Compiling objc2-app-kit v0.3.2
+   Compiling objc2-web-kit v0.3.2
+   Compiling tao v0.37.1
+   Compiling muda v0.20.0
+   Compiling window-vibrancy v0.8.1
+   Compiling objc2-osa-kit v0.3.2
+   Compiling rfd v0.15.4
+   Compiling osakit v0.3.1
+   Compiling tauri-runtime v2.12.1
+   Compiling tauri-runtime-wry v2.12.1
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:24:39
+   |
+24 |                 let style_mask: u64 = msg_send![ns_window, styleMask];
+   |                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:39:35
+   |
+39 |                     let btn: id = msg_send![ns_window, standardWindowButton: *btn_id];
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:41:47
+   |
+41 |                         let is_hidden: BOOL = msg_send![btn, isHidden];
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:45:37
+   |
+45 |                         let _: () = msg_send![btn, setControlSize: 1_u64];
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:46:54
+   |
+46 |                         let drawing_bounds: NSRect = msg_send![btn, bounds];
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:49:48
+   |
+49 |                         let content_view: id = msg_send![ns_window, contentView];
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:50:45
+   |
+50 |                         let superview: id = msg_send![btn, superview];
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:54:54
+   |
+54 |                         let content_bounds: NSRect = msg_send![content_view, bounds];
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:55:48
+   |
+55 |                         let is_flipped: BOOL = msg_send![content_view, isFlipped];
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:67:54
+   |
+67 |                           let native_center: NSPoint = msg_send![superview,
+   |  ______________________________________________________^
+68 | |                             convertPoint: content_center fromView: content_view];
+   | |________________________________________________________________________________^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:75:37
+   |
+75 |                         let _: () = msg_send![btn, setFrame: target_frame];
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:80:37
+   |
+80 |                           let _: () = msg_send![btn, setBoundsSize: NSSize {
+   |  _____________________________________^
+81 | |                             width: drawing_side, height: drawing_side,
+82 | |                         }];
+   | |__________________________^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `vx_mp3` (lib test) generated 12 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 36.82s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests src/lib.rs (target/debug/deps/vx_mp3_lib-3dad2e01d2b8dd74)
+
+running 25 tests
+test audio_core::tests::test_calculate_gain_steps ... ok
+test audio_core::tests::test_mpeg_crc16 ... ok
+test audio_core::tests::test_global_gain_read_write_stereo ... ok
+test audio_core::tests::test_global_gain_read_write_mono ... ok
+test regression_tests::final_qa_crash_child ... ignored
+test regression_tests::final_qa_prepared_crash_blocks_new_write_and_preserves_source ... ok
+test regression_tests::final_qa_undo_must_preserve_external_metadata_edit ... ok
+test audio_core::tests::test_wav_loudness_measurement ... ok
+test regression_tests::invalid_audio_and_failed_tag_write_leave_source_unchanged ... ok
+test regression_tests::active_gain_boundary_saturation_has_exact_inverse_even_with_piggyback ... ok
+test regression_tests::legacy_gain_journal_undo_includes_empty_granules ... ok
+test regression_tests::final_qa_partial_undo_can_retry_failed_path_without_replaying_success ... ok
+test regression_tests::mixed_tag_batch_retains_success_and_reports_missing_file ... ok
+test regression_tests::real_audio_copy_gain_regression ... ok
+test regression_tests::final_qa_process_crash_keeps_evidence_and_blocks_replay ... ok
+test regression_tests::text_edit_preserves_other_embedded_pictures_and_unknown_tags ... ok
+test transaction::tests::test_consecutive_undo_selection ... ok
+test transaction::tests::test_journal_entry_serialization ... ok
+test regression_tests::measure_progress_reports_intermediate_samples_and_each_failure ... ok
+test regression_tests::gain_progress_reports_phases_and_explicit_noop_and_failure ... ok
+test regression_tests::metadata_all_fields_clear_and_undo_roundtrip_preserves_audio ... ok
+test regression_tests::empty_zero_gain_granules_do_not_block_decrease_and_undo_is_exact ... ok
+test regression_tests::batch_ignores_stale_ui_db_and_replaygain_and_preserves_piggyback_gain ... ok
+test regression_tests::gain_rescan_and_inverse_are_real_for_mono_and_stereo ... ok
+test regression_tests::repeated_batch_is_idempotent_and_clipping_is_limited ... ok
+
+test result: ok. 24 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 4.35s

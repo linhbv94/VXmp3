@@ -1,0 +1,15 @@
+
+> vxmp3@1.0.0 build
+> tsc && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 1921 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                        0.51 kB │ gzip:   0.32 kB
+dist/assets/support_qr-BIRZLQ76.png   48.72 kB
+dist/assets/index-CWLIwvyU.css        54.38 kB │ gzip:   9.09 kB
+dist/assets/index-D1Jnc5xR.js        344.31 kB │ gzip: 101.89 kB
+
+✓ built in 528ms

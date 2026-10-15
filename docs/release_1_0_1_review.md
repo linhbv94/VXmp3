@@ -8,7 +8,7 @@ Ngày: 2026-10-15. User giao Codex QA và release/publish Windows x64 + macOS Si
 - Frontend build PASS. Rust `cargo test --locked --offline --lib`: 24 PASS, 1 ignored là crash child được test cha gọi riêng. Bao gồm metadata/gain/Undo, external edits, partial Undo, incomplete journal và crash subprocess.
 - Node frontend/recent/release tests: 17 PASS trước và sau mở rộng pipeline Windows.
 - Native app QA `com.vxmp3.qa.align20261015` (debug bundle, không dùng đánh giá tốc độ): scan 2 fixture mono/stereo + 1 file hỏng → 2 bài và báo 1 tệp không đọc được. Đo 79.1/82.1 dB, gain cả list về 89.6/89.6 dB quanh target89. Hai hash audio thay đổi, file hỏng không đổi. Undo native báo 2 tệp; hash cả3 khôi phục byte-exact. Không dùng nhạc gốc.
-- Native zoom/restore bằng action AppKit thành công. Sharing indicator vẫn che vùng traffic lights trong screenshot, nên chưa xác nhận trực quan hình dạng/căn tâm; không dùng source hoặc DOM để claim visual PASS.
+- Đã thực hiện hai action zoom/restore AppKit không báo lỗi; AX tree không đổi nên chưa có bằng chứng kích thước để nghiệm thu hành vi zoom/restore độc lập. Sharing indicator vẫn che vùng traffic lights trong screenshot, nên chưa xác nhận trực quan hình dạng/căn tâm; không dùng source hoặc DOM để claim visual PASS.
 
 ## Windows và release
 
@@ -21,3 +21,5 @@ Trước publish cần CI native cả3 target, đủ6assets, signatures thật, 
 ## CI 1.0.1 — dừng, không publish
 
 Run38711624548: Windows Rust24PASS; Node16/17, test gọi npm bằng spawn trực tiếp lỗi Windows .cmd shim (status null). Dừng các jobs còn lại, giữ nguyên tag bất biến. Đã sửa harness gọi npm qua ComSpec với arguments cố định và chọn NSIS trên Windows; phát hành tiếp bằng1.0.2, không thay package/tag1.0.1.
+
+Draft1.0.1 xác minh rỗng (0assets, ID413617487) đã được dọn; Git tag và run lỗi vẫn giữ nguyên. Không xóa/thay package public.

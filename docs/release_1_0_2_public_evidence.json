@@ -1,0 +1,105 @@
+{
+  "version": "1.0.2",
+  "release_id": 413627330,
+  "draft": false,
+  "prerelease": false,
+  "published_at": "2026-10-15T10:04:48Z",
+  "manifest_url": "https://github.com/linhbv94/VXmp3/releases/latest/download/latest.json",
+  "manifest_http": 200,
+  "authentication": "none",
+  "public_probes": [
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/latest.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.app.tar.gz",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.dmg",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.app.tar.gz",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.dmg",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_windows_x64_setup.exe",
+      "status": 200
+    }
+  ],
+  "assets": [
+    {
+      "name": "latest.json",
+      "size": 4491,
+      "digest": "sha256:13cf270b1800343988478f0a7b5136cf1156460f53fcc2a92ac457981a2ebfb4",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/latest.json"
+    },
+    {
+      "name": "vxmp3_1.0.2_macos_intel.app.tar.gz",
+      "size": 7079559,
+      "digest": "sha256:ed4c4b88c0254d2851147dd61b471fd87d1c27d790adc7fcfc01f122cf2a1248",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.app.tar.gz"
+    },
+    {
+      "name": "vxmp3_1.0.2_macos_intel.dmg",
+      "size": 7611336,
+      "digest": "sha256:58feeed5f60d09e5346845b2cafb8f761266d0d736f3c90e75d2f70dc6d1839b",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.dmg"
+    },
+    {
+      "name": "vxmp3_1.0.2_macos_silicon.app.tar.gz",
+      "size": 6798209,
+      "digest": "sha256:a0331e67027ce3c259763eac715a8c5c581bab10ab81bd7a37e52d974f279d60",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.app.tar.gz"
+    },
+    {
+      "name": "vxmp3_1.0.2_macos_silicon.dmg",
+      "size": 7271095,
+      "digest": "sha256:abbcb2a562deb5ac739ce1de4acfaa27f41b735923cf8330159fcc4e53b7325f",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.dmg"
+    },
+    {
+      "name": "vxmp3_1.0.2_windows_x64_setup.exe",
+      "size": 4250511,
+      "digest": "sha256:093ca31f0ce97e72e19202968a26b50553e855a53f41895b1253ee53ca54da86",
+      "browser_download_url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_windows_x64_setup.exe"
+    }
+  ],
+  "manifest": {
+    "version": "1.0.2",
+    "notes": "- Đã có bản cài Windows x64, hỗ trợ sửa thẻ nhạc và cân bằng âm lượng MP3.\n- Căn chỉnh lại các nút điều khiển cửa sổ trên macOS.\n\n**Tải ứng dụng**\n\n- [Windows x64](https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_windows_x64_setup.exe)\n- [macOS Apple Silicon (dòng chip M)](https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.dmg)\n- [macOS Intel](https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.dmg)\n\n**Cài đặt:** Windows: tải và chạy bộ cài .exe. macOS: mở DMG, kéo VXmp3 vào Applications rồi mở từ đó. Hệ điều hành có thể yêu cầu cho phép mở ứng dụng lần đầu.\n\n**Đã cài ứng dụng?** Mở Cài đặt → Cập nhật để kiểm tra bản mới.\n",
+    "pub_date": "2026-10-15T10:03:01.047Z",
+    "platforms": {
+      "windows-x86_64": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaFZSWmQ3dHlkbnM2ajRzRzZLdVBPbGduQVZUSXJwQmVudUY4S29mVlZtcndrajZZRm1ZUGJ0Y3pJZE9jV0xIOEQ1dVVmNGphN0EvSm5YRll3NGFNc3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU2OTk3CWZpbGU6VlhtcDNfMS4wLjJfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjEuMC4yCnBrUzRoVVdDamtZVEplNVJJdXVVclpOalVRZHJTcnJabFArWElsdlVyaGVzQW0yQnEyY0FyR0Z1R2lia25HMk4wRFhpWGg2UVlSQzlJUkt2Unp5ZERnPT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_windows_x64_setup.exe"
+      },
+      "windows-x86_64-nsis": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaFZSWmQ3dHlkbnM2ajRzRzZLdVBPbGduQVZUSXJwQmVudUY4S29mVlZtcndrajZZRm1ZUGJ0Y3pJZE9jV0xIOEQ1dVVmNGphN0EvSm5YRll3NGFNc3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU2OTk3CWZpbGU6VlhtcDNfMS4wLjJfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjEuMC4yCnBrUzRoVVdDamtZVEplNVJJdXVVclpOalVRZHJTcnJabFArWElsdlVyaGVzQW0yQnEyY0FyR0Z1R2lia25HMk4wRFhpWGg2UVlSQzlJUkt2Unp5ZERnPT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_windows_x64_setup.exe"
+      },
+      "darwin-aarch64": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaFord3NtTlpNV1FFVnJHTElYRUhFVGFhN3plaXZFK0l2cXN1MGUxbHFsWDZsTEtBSG5XZzZMcHVXek11KzJESXZEY3JhNGV3dGJkWTdBeWlvWmNvN3d3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU3NDIxCWZpbGU6VlhtcDMuYXBwLnRhci5negl2ZXJzaW9uOjEuMC4yCjB3NGM2cUxvRCs5dDMxajJ6dng5L1ZNd0ZBNUJXVzM0MzBqb3kvbDc3YzI5SnZibnJXbFh5UWxRVHJqbExoRUx0eWxoeEJ0NHJUbEhOUzVzOEhoM0F3PT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.app.tar.gz"
+      },
+      "darwin-aarch64-app": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaFord3NtTlpNV1FFVnJHTElYRUhFVGFhN3plaXZFK0l2cXN1MGUxbHFsWDZsTEtBSG5XZzZMcHVXek11KzJESXZEY3JhNGV3dGJkWTdBeWlvWmNvN3d3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU3NDIxCWZpbGU6VlhtcDMuYXBwLnRhci5negl2ZXJzaW9uOjEuMC4yCjB3NGM2cUxvRCs5dDMxajJ6dng5L1ZNd0ZBNUJXVzM0MzBqb3kvbDc3YzI5SnZibnJXbFh5UWxRVHJqbExoRUx0eWxoeEJ0NHJUbEhOUzVzOEhoM0F3PT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_silicon.app.tar.gz"
+      },
+      "darwin-x86_64": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaGE4RENQdkVybUdiaTArcHdYdEx1UktQT2loL2QybURnelpNamoxR1g3ZG00dzZzUmZoK05teVRtZGNZQ3ZFTmE3UHBWc2VWUjR0cFV1c0R3bkg2RkFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU4NTc3CWZpbGU6VlhtcDMuYXBwLnRhci5negl2ZXJzaW9uOjEuMC4yCkZxRFF3V0hEUmV4RXFlYTBTbSs3YXZ3QktScElaVUIwY2lBZnBHTExLMld5N1F1VWgvNUQvSnVCMTN6SDlOUVhUVEkrcnl1VjlRbGFSYlJrZG5OeEJBPT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.app.tar.gz"
+      },
+      "darwin-x86_64-app": {
+        "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUb2RBZUNBdXhnaGE4RENQdkVybUdiaTArcHdYdEx1UktQT2loL2QybURnelpNamoxR1g3ZG00dzZzUmZoK05teVRtZGNZQ3ZFTmE3UHBWc2VWUjR0cFV1c0R3bkg2RkFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMDU4NTc3CWZpbGU6VlhtcDMuYXBwLnRhci5negl2ZXJzaW9uOjEuMC4yCkZxRFF3V0hEUmV4RXFlYTBTbSs3YXZ3QktScElaVUIwY2lBZnBHTExLMld5N1F1VWgvNUQvSnVCMTN6SDlOUVhUVEkrcnl1VjlRbGFSYlJrZG5OeEJBPT0K",
+        "url": "https://github.com/linhbv94/VXmp3/releases/download/v1.0.2/vxmp3_1.0.2_macos_intel.app.tar.gz"
+      }
+    }
+  }
+}

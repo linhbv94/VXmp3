@@ -1,0 +1,504 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling libc v0.2.190
+   Compiling serde_core v1.0.229
+   Compiling find-msvc-tools v0.1.14
+   Compiling shlex v2.0.1
+   Compiling cc v1.6.0
+   Compiling icu_normalizer_data v2.3.0
+   Compiling icu_properties_data v2.3.0
+   Compiling cfg-if v1.0.5
+   Compiling zmij v1.0.23
+   Compiling siphasher v1.0.4
+   Compiling phf_shared v0.13.1
+   Compiling fastrand v2.5.0
+   Compiling stable_deref_trait v1.2.1
+   Compiling phf_generator v0.13.1
+   Compiling memchr v2.8.3
+   Compiling serde v1.0.229
+   Compiling getrandom v0.4.3
+   Compiling smallvec v1.16.2
+   Compiling thiserror v2.0.21
+   Compiling itoa v1.0.18
+   Compiling typeid v1.0.3
+   Compiling num-conv v0.2.2
+   Compiling time-core v0.1.9
+   Compiling phf_codegen v0.13.1
+   Compiling strsim v0.11.1
+   Compiling erased-serde v0.4.10
+   Compiling ident_case v1.0.1
+   Compiling log v0.4.34
+   Compiling litemap v0.8.3
+   Compiling serde_json v1.0.151
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling writeable v0.6.4
+   Compiling bitflags v2.13.2
+   Compiling parking_lot_core v0.9.12
+   Compiling utf8_iter v1.0.4
+   Compiling autocfg v1.5.1
+   Compiling scopeguard v1.2.0
+   Compiling new_debug_unreachable v1.0.6
+   Compiling anyhow v1.0.104
+   Compiling lock_api v0.4.14
+   Compiling string_cache_codegen v0.6.1
+   Compiling synstructure v0.14.0
+   Compiling darling_core v0.24.1
+   Compiling version_check v0.9.5
+   Compiling precomputed-hash v0.1.1
+   Compiling parking_lot v0.12.5
+   Compiling web_atoms v0.2.6
+   Compiling semver v1.0.28
+   Compiling objc2-exception-helper v0.1.1
+   Compiling winnow v1.0.4
+   Compiling string_cache v0.9.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling phf_macros v0.13.1
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling dtoa v1.0.11
+   Compiling core-foundation-sys v0.8.7
+   Compiling percent-encoding v2.3.2
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.4
+   Compiling serde_derive v1.0.229
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling thiserror-impl v2.0.21
+   Compiling phf v0.13.1
+   Compiling form_urlencoded v1.2.2
+   Compiling cssparser-macros v0.7.1
+   Compiling zerofrom v0.1.8
+   Compiling dtoa-short v0.3.5
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling darling_macro v0.24.1
+   Compiling derive_more-impl v2.1.1
+   Compiling uuid v1.27.0
+   Compiling darling v0.24.1
+   Compiling tendril v0.5.1
+   Compiling indexmap v1.9.3
+   Compiling yoke v0.8.3
+   Compiling selectors v0.38.0
+   Compiling aho-corasick v1.1.5
+   Compiling serde_with_macros v3.24.0
+   Compiling alloc-no-stdlib v3.0.0
+   Compiling regex-syntax v0.8.11
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling objc2 v0.6.5
+   Compiling camino v1.2.6
+   Compiling regex-automata v0.4.18
+   Compiling swift-rs v1.0.8
+   Compiling alloc-stdlib v0.3.0
+   Compiling derive_more v2.1.1
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_collections v2.3.0
+   Compiling markup5ever v0.39.0
+   Compiling cssparser v0.37.0
+   Compiling serde_derive_internals v0.29.1
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling servo_arc v0.4.3
+   Compiling hashbrown v0.12.3
+   Compiling rustc-hash v2.1.3
+   Compiling powerfmt v0.2.1
+   Compiling hashbrown v0.17.1
+   Compiling objc2-encode v4.1.0
+   Compiling bit-vec v0.8.0
+   Compiling deranged v0.5.8
+   Compiling idna_adapter v1.2.2
+   Compiling equivalent v1.0.2
+   Compiling idna v1.1.0
+   Compiling web-time v1.1.0
+   Compiling fnv v1.0.7
+   Compiling schemars v0.8.22
+   Compiling cfb v0.14.0
+   Compiling indexmap v2.14.2
+   Compiling url v2.5.8
+   Compiling time v0.3.55
+   Compiling bit-set v0.8.0
+   Compiling schemars_derive v0.8.22
+   Compiling html5ever v0.39.0
+   Compiling regex v1.13.1
+   Compiling brotli-decompressor v6.0.1
+   Compiling cargo-platform v0.1.9
+   Compiling jsonptr v0.7.1
+   Compiling quick-xml v0.42.0
+   Compiling same-file v1.0.6
+   Compiling dyn-clone v1.0.20
+   Compiling bytes v1.12.1
+   Compiling foldhash v0.2.0
+   Compiling base64 v0.21.7
+   Compiling dunce v1.0.5
+   Compiling base64 v0.23.1
+   Compiling dom_query v0.28.0
+   Compiling plist v1.10.1
+   Compiling brotli v9.0.0
+   Compiling http v1.5.0
+   Compiling walkdir v2.5.0
+   Compiling json-patch v4.2.0
+   Compiling cargo_metadata v0.19.2
+   Compiling serde-untagged v0.1.9
+   Compiling urlpattern v0.6.0
+   Compiling infer v0.22.0
+   Compiling serde_with v3.24.0
+   Compiling glob v0.3.4
+   Compiling ctor v1.0.13
+   Compiling block2 v0.6.2
+   Compiling generic-array v0.14.7
+   Compiling crc32fast v1.5.2
+   Compiling objc2-core-foundation v0.3.2
+   Compiling bitflags v1.3.2
+   Compiling arrayvec v0.7.8
+   Compiling pin-project-lite v0.2.17
+   Compiling bytemuck v1.25.2
+   Compiling once_cell v1.21.4
+   Compiling rustversion v1.0.23
+   Compiling lazy_static v1.5.1
+   Compiling symphonia-core v0.5.5
+   Compiling core-foundation v0.10.1
+   Compiling tauri-utils v2.10.1
+   Compiling objc2-foundation v0.3.2
+   Compiling rustc_version v0.4.1
+   Compiling option-ext v0.2.0
+   Compiling dirs-sys v0.5.0
+   Compiling embed-resource v3.0.11
+   Compiling encoding_rs v0.8.42
+   Compiling socket2 v0.6.5
+   Compiling mio v1.2.4
+   Compiling simd-adler32 v0.3.10
+   Compiling heck v0.5.0
+   Compiling tokio v1.53.2
+   Compiling tauri-winres v0.3.6
+   Compiling dirs v7.0.0
+   Compiling cargo_toml v1.0.1
+   Compiling multiversion_no_op v1.0.0
+   Compiling adler2 v2.0.1
+   Compiling futures-core v0.3.34
+   Compiling simdutf8 v0.1.5
+   Compiling time-macros v0.2.32
+   Compiling typenum v1.20.1
+   Compiling symphonia-metadata v0.5.5
+   Compiling miniz_oxide v0.9.1
+   Compiling core-graphics-types v0.2.0
+   Compiling foreign-types-macros v0.2.4
+   Compiling ring v0.17.14
+   Compiling tauri-build v2.7.1
+   Compiling tauri-plugin v2.7.1
+   Compiling raw-window-handle v0.6.2
+   Compiling foreign-types-shared v0.3.1
+   Compiling crossbeam-utils v0.8.23
+   Compiling foreign-types v0.5.0
+   Compiling flate2 v1.1.10
+   Compiling miniz_oxide v0.8.9
+   Compiling fdeflate v0.3.7
+   Compiling dpi v0.1.2
+   Compiling cookie v0.18.2
+   Compiling tauri v2.12.1
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling getrandom v0.2.17
+   Compiling objc2-quartz-core v0.3.2
+   Compiling objc2-app-kit v0.3.2
+   Compiling zeroize v1.9.1
+   Compiling untrusted v0.9.0
+   Compiling rustls-pki-types v1.15.1
+   Compiling png v0.17.16
+   Compiling digest v0.10.7
+   Compiling crossbeam-channel v0.5.17
+   Compiling wry v0.57.0
+   Compiling http-body v1.1.0
+   Compiling dispatch2 v0.3.1
+   Compiling futures-macro v0.3.34
+   Compiling objc2-web-kit v0.3.2
+   Compiling cpufeatures v0.2.17
+   Compiling byteorder v1.5.0
+   Compiling slab v0.4.12
+   Compiling system-configuration-sys v0.6.0
+   Compiling tauri-runtime v2.12.1
+   Compiling futures-task v0.3.34
+   Compiling rustls v0.23.45
+   Compiling httparse v1.10.1
+   Compiling futures-util v0.3.34
+   Compiling ico v0.5.0
+   Compiling sha2 v0.10.9
+   Compiling rustls-webpki v0.103.15
+   Compiling png v0.18.1
+   Compiling core-graphics v0.25.0
+   Compiling symphonia-utils-xiph v0.5.5
+   Compiling muda v0.20.0
+   Compiling try-lock v0.2.5
+   Compiling subtle v2.6.1
+   Compiling base64 v0.22.1
+   Compiling rustix v1.1.5
+   Compiling tauri-runtime-wry v2.12.1
+   Compiling getrandom v0.3.4
+   Compiling tower-service v0.3.3
+   Compiling tauri-codegen v2.7.1
+   Compiling want v0.3.2
+   Compiling tao v0.37.1
+   Compiling futures-channel v0.3.34
+   Compiling tracing-core v0.1.36
+   Compiling keyboard-types v0.8.3
+   Compiling core-foundation v0.9.4
+   Compiling serialize-to-javascript-impl v0.1.2
+   Compiling errno v0.3.14
+   Compiling atomic-waker v1.1.2
+   Compiling hyper v1.11.1
+   Compiling serialize-to-javascript v0.1.2
+   Compiling system-configuration v0.7.0
+   Compiling tracing v0.1.44
+   Compiling tauri-macros v2.7.1
+   Compiling window-vibrancy v0.8.1
+   Compiling sync_wrapper v1.0.2
+   Compiling security-framework-sys v2.17.0
+   Compiling serde_repr v0.1.21
+   Compiling embed_plist v1.2.2
+   Compiling ipnet v2.12.2
+   Compiling http-range v0.1.5
+   Compiling mime v0.3.17
+   Compiling tower-layer v0.3.3
+   Compiling tower v0.5.3
+   Compiling hyper-util v0.1.21
+   Compiling security-framework v3.7.0
+   Compiling tokio-rustls v0.26.6
+   Compiling tauri-plugin-process v2.4.0
+   Compiling tauri-plugin-opener v2.7.0
+   Compiling tauri-plugin-updater v2.13.1
+   Compiling num-traits v0.2.19
+   Compiling malloc_buf v0.0.6
+   Compiling futures-sink v0.3.34
+   Compiling paste v1.0.15
+   Compiling tokio-util v0.7.19
+   Compiling rustls-platform-verifier v0.7.1
+   Compiling objc v0.2.7
+   Compiling hyper-rustls v0.27.10
+   Compiling tower-http v0.6.11
+   Compiling xattr v1.6.1
+   Compiling objc2-osa-kit v0.3.2
+   Compiling http-body-util v0.1.5
+   Compiling filetime v0.2.29
+   Compiling block v0.1.6
+   Compiling dasp_sample v0.11.0
+   Compiling ebur128 v0.1.10
+   Compiling extended v0.1.0
+   Compiling rfd v0.15.4
+   Compiling ogg_pager v0.6.1
+   Compiling tempfile v3.27.0
+   Compiling dasp_frame v0.11.0
+   Compiling symphonia-format-riff v0.5.5
+   Compiling osakit v0.3.1
+   Compiling reqwest v0.13.5
+   Compiling cocoa-foundation v0.2.1
+   Compiling tar v0.4.46
+   Compiling symphonia-format-ogg v0.5.5
+   Compiling symphonia-format-isomp4 v0.5.5
+   Compiling symphonia-bundle-flac v0.5.5
+   Compiling symphonia-codec-vorbis v0.5.5
+   Compiling symphonia-format-mkv v0.5.5
+   Compiling vx_mp3 v1.0.2 (/Users/vic/_Work/zTools/vxmp3/src-tauri)
+   Compiling core-graphics v0.24.0
+   Compiling symphonia-bundle-mp3 v0.5.5
+   Compiling symphonia-format-caf v0.5.5
+   Compiling symphonia-codec-aac v0.5.5
+   Compiling symphonia-codec-pcm v0.5.5
+   Compiling symphonia-codec-adpcm v0.5.5
+   Compiling symphonia-codec-alac v0.5.5
+   Compiling iana-time-zone v0.1.65
+   Compiling lofty_attr v0.11.1
+   Compiling open v5.4.4
+   Compiling minisign-verify v0.2.5
+   Compiling data-encoding v2.11.1
+   Compiling lofty v0.21.1
+   Compiling chrono v0.4.45
+   Compiling symphonia v0.5.5
+   Compiling cocoa v0.26.1
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:24:39
+   |
+24 |                 let style_mask: u64 = msg_send![ns_window, styleMask];
+   |                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:39:35
+   |
+39 |                     let btn: id = msg_send![ns_window, standardWindowButton: *btn_id];
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:41:47
+   |
+41 |                         let is_hidden: BOOL = msg_send![btn, isHidden];
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:45:37
+   |
+45 |                         let _: () = msg_send![btn, setControlSize: 1_u64];
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:46:54
+   |
+46 |                         let drawing_bounds: NSRect = msg_send![btn, bounds];
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:49:48
+   |
+49 |                         let content_view: id = msg_send![ns_window, contentView];
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:50:45
+   |
+50 |                         let superview: id = msg_send![btn, superview];
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:54:54
+   |
+54 |                         let content_bounds: NSRect = msg_send![content_view, bounds];
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:55:48
+   |
+55 |                         let is_flipped: BOOL = msg_send![content_view, isFlipped];
+   |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:67:54
+   |
+67 |                           let native_center: NSPoint = msg_send![superview,
+   |  ______________________________________________________^
+68 | |                             convertPoint: content_center fromView: content_view];
+   | |________________________________________________________________________________^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:75:37
+   |
+75 |                         let _: () = msg_send![btn, setFrame: target_frame];
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `cargo-clippy`
+  --> src/lib.rs:80:37
+   |
+80 |                           let _: () = msg_send![btn, setBoundsSize: NSSize {
+   |  _____________________________________^
+81 | |                             width: drawing_side, height: drawing_side,
+82 | |                         }];
+   | |__________________________^
+   |
+   = note: no expected values for `feature`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `sel_impl` crate for guidance on how handle this unexpected cfg
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `sel_impl` which comes from the expansion of the macro `msg_send` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `vx_mp3` (lib test) generated 12 warnings
+    Finished `release` profile [optimized] target(s) in 2m 32s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests src/lib.rs (target/release/deps/vx_mp3_lib-a79cf424483aeb28)
+
+running 25 tests
+test audio_core::tests::test_global_gain_read_write_mono ... ok
+test audio_core::tests::test_mpeg_crc16 ... ok
+test audio_core::tests::test_calculate_gain_steps ... ok
+test audio_core::tests::test_global_gain_read_write_stereo ... ok
+test regression_tests::final_qa_crash_child ... ignored
+test regression_tests::final_qa_prepared_crash_blocks_new_write_and_preserves_source ... ok
+test audio_core::tests::test_wav_loudness_measurement ... ok
+test regression_tests::gain_progress_reports_phases_and_explicit_noop_and_failure ... ok
+test regression_tests::final_qa_undo_must_preserve_external_metadata_edit ... ok
+test regression_tests::invalid_audio_and_failed_tag_write_leave_source_unchanged ... ok
+test regression_tests::measure_progress_reports_intermediate_samples_and_each_failure ... ok
+test regression_tests::active_gain_boundary_saturation_has_exact_inverse_even_with_piggyback ... ok
+test regression_tests::batch_ignores_stale_ui_db_and_replaygain_and_preserves_piggyback_gain ... ok
+test regression_tests::real_audio_copy_gain_regression ... ok
+test regression_tests::legacy_gain_journal_undo_includes_empty_granules ... ok
+test regression_tests::mixed_tag_batch_retains_success_and_reports_missing_file ... ok
+test transaction::tests::test_consecutive_undo_selection ... ok
+test transaction::tests::test_journal_entry_serialization ... ok
+test regression_tests::empty_zero_gain_granules_do_not_block_decrease_and_undo_is_exact ... ok
+test regression_tests::final_qa_partial_undo_can_retry_failed_path_without_replaying_success ... ok
+test regression_tests::gain_rescan_and_inverse_are_real_for_mono_and_stereo ... ok
+test regression_tests::repeated_batch_is_idempotent_and_clipping_is_limited ... ok
+test regression_tests::text_edit_preserves_other_embedded_pictures_and_unknown_tags ... ok
+test regression_tests::metadata_all_fields_clear_and_undo_roundtrip_preserves_audio ... ok
+test regression_tests::final_qa_process_crash_keeps_evidence_and_blocks_replay ... ok
+
+test result: ok. 24 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.79s

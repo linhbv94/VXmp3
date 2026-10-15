@@ -1,0 +1,39 @@
+Failed to parse recent items for key: bad SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+    at JSON.parse (<anonymous>)
+    at getRecentItems (data:text/javascript;base64,ZXhwb3J0IGZ1bmN0aW9uIGdldFJlY2VudEl0ZW1zKHN0b3JhZ2VLZXkgICAgICAgICwgbWF4SXRlbXMgICAgICAgICA9IDUpICAgICAgICAgICB7CiAgdHJ5IHsKICAgIGNvbnN0IHJhdyA9IGxvY2FsU3RvcmFnZS5nZXRJdGVtKHN0b3JhZ2VLZXkpOwogICAgaWYgKCFyYXcpIHJldHVybiBbXTsKICAgIGNvbnN0IHBhcnNlZCA9IEpTT04ucGFyc2UocmF3KTsKICAgIGlmIChBcnJheS5pc0FycmF5KHBhcnNlZCkpIHsKICAgICAgcmV0dXJuIHBhcnNlZAogICAgICAgIC5maWx0ZXIoKGl0ZW0pICAgICAgICAgICAgICAgICA9PiB0eXBlb2YgaXRlbSA9PT0gJ3N0cmluZycgJiYgaXRlbS50cmltKCkubGVuZ3RoID4gMCkKICAgICAgICAuc2xpY2UoMCwgbWF4SXRlbXMpOwogICAgfQogIH0gY2F0Y2ggKGVycikgewogICAgY29uc29sZS53YXJuKCdGYWlsZWQgdG8gcGFyc2UgcmVjZW50IGl0ZW1zIGZvciBrZXk6Jywgc3RvcmFnZUtleSwgZXJyKTsKICB9CiAgcmV0dXJuIFtdOwp9CgpleHBvcnQgZnVuY3Rpb24gYWRkUmVjZW50SXRlbShzdG9yYWdlS2V5ICAgICAgICAsIHBhdGggICAgICAgICwgbWF4SXRlbXMgICAgICAgICA9IDUpICAgICAgICAgICB7CiAgaWYgKCFwYXRoIHx8IHR5cGVvZiBwYXRoICE9PSAnc3RyaW5nJyB8fCAhcGF0aC50cmltKCkpIHJldHVybiBnZXRSZWNlbnRJdGVtcyhzdG9yYWdlS2V5LCBtYXhJdGVtcyk7CiAgY29uc3Qgbm9ybWFsaXplZFBhdGggPSBwYXRoLnRyaW0oKTsKICBjb25zdCBjdXJyZW50ID0gZ2V0UmVjZW50SXRlbXMoc3RvcmFnZUtleSwgMjApOwogIGNvbnN0IGtleSA9ICh2YWx1ZSAgICAgICAgKSA9PiB2YWx1ZS5yZXBsYWNlKC9cXC9nLCAnLycpLnJlcGxhY2UoL1wvKyQvLCAnJykudG9Mb3dlckNhc2UoKTsKICBjb25zdCBmaWx0ZXJlZCA9IGN1cnJlbnQuZmlsdGVyKChleGlzdGluZykgPT4ga2V5KGV4aXN0aW5nKSAhPT0ga2V5KG5vcm1hbGl6ZWRQYXRoKSk7CiAgY29uc3QgdXBkYXRlZCA9IFtub3JtYWxpemVkUGF0aCwgLi4uZmlsdGVyZWRdLnNsaWNlKDAsIG1heEl0ZW1zKTsKICB0cnkgewogICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oc3RvcmFnZUtleSwgSlNPTi5zdHJpbmdpZnkodXBkYXRlZCkpOwogICAgd2luZG93LmRpc3BhdGNoRXZlbnQoCiAgICAgIG5ldyBDdXN0b21FdmVudCgndnhfcmVjZW50X3VwZGF0ZScsIHsgZGV0YWlsOiB7IGtleTogc3RvcmFnZUtleSwgaXRlbXM6IHVwZGF0ZWQgfSB9KQogICAgKTsKICB9IGNhdGNoIChlcnIpIHsKICAgIGNvbnNvbGUud2FybignRmFpbGVkIHRvIHNhdmUgcmVjZW50IGl0ZW0gZm9yIGtleTonLCBzdG9yYWdlS2V5LCBlcnIpOwogIH0KICByZXR1cm4gdXBkYXRlZDsKfQoKZXhwb3J0IGZ1bmN0aW9uIGdldFNob3J0UGF0aE5hbWUoZnVsbFBhdGggICAgICAgICkgICAgICAgICB7CiAgaWYgKCFmdWxsUGF0aCkgcmV0dXJuICcnOwogIGNvbnN0IHBhcnRzID0gZnVsbFBhdGgucmVwbGFjZSgvXFwvZywgJy8nKS5zcGxpdCgnLycpLmZpbHRlcihCb29sZWFuKTsKICByZXR1cm4gcGFydHMucG9wKCkgfHwgZnVsbFBhdGg7Cn0K:5:25)
+    at TestContext.<anonymous> (file:///Users/vic/_Work/zTools/vxmp3/scripts/test_recent.mjs:5:104)
+    at Test.runInAsyncScope (node:async_hooks:226:14)
+    at Test.run (node:internal/test_runner/test:1382:25)
+    at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    at Test.postRun (node:internal/test_runner/test:1522:19)
+    at Test.run (node:internal/test_runner/test:1447:12)
+    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+(node:61401) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ recent caps five, MRU dedup and file/folder isolation (3.363792ms)
+✔ corrupt storage/blank input and Windows alias paths (4.164542ms)
+✔ Tauri signature verification accepts independent legacy/prehashed Minisign vectors and rejects tampering (281.606083ms)
+✔ six assets must include distinct installers and architecture-correct updater URLs (41.461167ms)
+✔ notes require real version-specific changes and link only first-install downloads (593.903208ms)
+✔ stable version comparisons reject a rollback or re-publishing the same version (30.225042ms)
+✔ publish refuses unconfirmed QA or a failed exact-commit build before downloading or mutating assets (1209.277167ms)
+✔ finalization preserves the draft tag and publishes only verified packages; corruption leaves it untouched (2435.002958ms)
+✔ custom release CLI receives installer flags as Tauri options, not Cargo arguments (1626.9325ms)
+(node:61403) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ StrictMode/startup subscribers issue one check and never auto-install (37.53125ms)
+✔ offline startup stays quiet; explicit check shows a recoverable error (0.766334ms)
+✔ concurrent install requests download once and report progress before restart (6.174375ms)
+✔ signature/download failure never restarts and permits a new check (0.254875ms)
+✔ restart failure retains installed state and retry does not re-download (0.558125ms)
+✔ browser/dev/secondary window never invokes updater APIs (0.142166ms)
+✔ unsaved changes block install before download and allow retry (0.49525ms)
+✔ failed download releases the native mutation guard (0.172541ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7292.168209
