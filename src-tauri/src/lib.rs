@@ -15,8 +15,8 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
         #[allow(deprecated)]
         use cocoa::base::{id, nil, BOOL, YES};
         #[allow(deprecated)]
-        use cocoa::foundation::{NSPoint, NSRect, NSSize};
-        use objc::{msg_send, sel, sel_impl};
+        use cocoa::foundation::{NSPoint, NSRect};
+        use objc::{class, msg_send, sel, sel_impl};
 
         if let Ok(ns_win_ptr) = win_closure.ns_window() {
             let ns_window = ns_win_ptr as id;
@@ -29,12 +29,8 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                 }
 
                 // Traffic lights buttons: 0 = Close, 1 = Miniaturize, 2 = Zoom
-                // Standard diameter = 12pt, spacing = 20pt (center-to-center)
-                // Left margin chừa 82px:
-                // Close button: origin x = 8.0 (span 8.0..20.0, center 14.0)
-                // Miniaturize button: origin x = 28.0 (span 28.0..40.0, center 34.0)
-                // Zoom button: origin x = 48.0 (span 48.0..60.0, center 54.0)
-                // Span ends at 60.0px, giving 22px clearance before pl-[82px]
+                // Native visible diameter (SDK15.5) = 12pt, center spacing = 20pt.
+                // View dimensions include AppKit padding; never force the view to 12x12.
                 for (i, btn_id) in [0, 1, 2].iter().enumerate() {
                     let btn: id = msg_send![ns_window, standardWindowButton: *btn_id];
                     if btn != nil {
@@ -42,8 +38,17 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                         if is_hidden == YES {
                             continue;
                         }
-                        let _: () = msg_send![btn, setControlSize: 1_u64];
-                        let drawing_bounds: NSRect = msg_send![btn, bounds];
+                        // A 12pt bezel has native padding (SDK15.5: frame14x16).
+                        // Restore pristine AppKit geometry, never scale the bezel to 12x12.
+                        let reference: id = msg_send![class!(NSWindow),
+                            standardWindowButton: *btn_id forStyleMask: style_mask];
+                        if reference == nil {
+                            continue;
+                        }
+                        let reference_frame: NSRect = msg_send![reference, frame];
+                        let reference_bounds: NSRect = msg_send![reference, bounds];
+                        let control_size: u64 = msg_send![reference, controlSize];
+                        let _: () = msg_send![btn, setControlSize: control_size];
                         // Align against the web content toolbar, not AppKit titlebar metrics.
                         // convertPoint handles the native parent hierarchy and flipped coordinates.
                         let content_view: id = msg_send![ns_window, contentView];
@@ -66,20 +71,15 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                         };
                         let native_center: NSPoint = msg_send![superview,
                             convertPoint: content_center fromView: content_view];
-                        let target_x = native_center.x - 6.0;
-                        let target_y = native_center.y - 6.0;
+                        let target_x = native_center.x - reference_frame.size.width / 2.0;
+                        let target_y = native_center.y - reference_frame.size.height / 2.0;
                         let target_frame = NSRect {
                             origin: NSPoint { x: target_x, y: target_y },
-                            size: NSSize { width: 12.0, height: 12.0 },
+                            size: reference_frame.size,
                         };
                         let _: () = msg_send![btn, setFrame: target_frame];
-                        // AppKit's native button bounds may be rectangular (e.g. 14x16).
-                        // A square frame with rectangular bounds scales X/Y differently.
-                        // Keep an isotropic drawing space, including on repeated focus/resize.
-                        let drawing_side = drawing_bounds.size.width;
-                        let _: () = msg_send![btn, setBoundsSize: NSSize {
-                            width: drawing_side, height: drawing_side,
-                        }];
+                        // Match frame/bounds without a view transform, retaining native padding.
+                        let _: () = msg_send![btn, setBounds: reference_bounds];
                     }
                 }
             }

@@ -1,6 +1,6 @@
 [package]
 name = "vx_mp3"
-version = "1.0.2"
+version = "1.0.3"
 description = "VXmp3 — Lossless MP3 Gain & Batch Audio Tag Editor"
 authors = ["vic"]
 edition = "2021"
