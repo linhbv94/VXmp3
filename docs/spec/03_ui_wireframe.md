@@ -3,8 +3,8 @@
 > **Module:** Đặc tả Giao diện Người dùng, Bố cục Khung nhìn & Hệ thống Thành phần (UI Wireframe Specs)  
 > **Tài liệu cha:** [00_system_overview.md](00_system_overview.md)  
 > **Ngôn ngữ thiết kế:** Tuân thủ chuẩn [master_theme.md](../../../_summary/master_theme.md) và [desktop_ui_standards.md](../../../.agents/desktop_ui_standards.md) (VX Navy `#0f1117`, Electric Cyan `#06b6d4`, Amber `#fbbf24`)  
-> **Phiên bản:** 1.0.1  
-> **Ngày cập nhật:** 2026-10-27  
+> **Phiên bản:** 1.0.1
+> **Ngày cập nhật:** 2026-10-27
 
 ---
 
