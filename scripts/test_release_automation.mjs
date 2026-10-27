@@ -159,9 +159,12 @@ test('custom release CLI receives installer flags as Tauri options, not Cargo ar
   // Keep the command fixed and validated before passing it through cmd.exe.
   assert.equal(bin, 'npm');
   assert.deepEqual(prefix, ['run', 'tauri']);
+  const emptyTarget = mkdtempSync(join(tmpdir(), 'vx_cli_help_'));
+  const helpEnv = {...process.env, CARGO_TARGET_DIR:emptyTarget};
   const result = process.platform === 'win32'
-    ? spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', [bin, ...args].join(' ')], {cwd:'.', encoding:'utf8', timeout:30000})
-    : spawnSync(bin, args, {cwd:'.', encoding:'utf8', timeout:30000});
+    ? spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', [bin, ...args].join(' ')], {cwd:'.', encoding:'utf8', timeout:30000, env:helpEnv})
+    : spawnSync(bin, args, {cwd:'.', encoding:'utf8', timeout:30000, env:helpEnv});
+  rmSync(emptyTarget, {recursive:true,force:true});
   assert.equal(result.status, 0, result.error?.message || result.stderr);
   assert.match(result.stdout, /generate bundles and installers/);
   assert.match(result.stdout, /--bundles/);
