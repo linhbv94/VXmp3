@@ -1,0 +1,14 @@
+{
+  "version": "1.0.5",
+  "source_commit": "7c09363b269e378701c637b0373825dea6280323",
+  "build_run_id": 40451396033,
+  "state": "failed_not_published",
+  "sdk_baseline": "27.0",
+  "mac_runner": "xcode-27 (standard)",
+  "intel_cross_build": true,
+  "native_gui": false,
+  "hardware_click_test": false,
+  "hardware_test_skipped_by_user": false,
+  "updater_old_to_new": false,
+  "local_rust_pass": 24
+}

@@ -1,0 +1,159 @@
+{
+  "version": "1.0.6",
+  "source_commit": "dda75afd5863f03c672378c68b1f4a4cec5c6418",
+  "build_run_id": 40452982850,
+  "state": "public_verified",
+  "sdk_baseline": "27.0",
+  "mac_runner": "xcode-27 (standard)",
+  "intel_cross_build": true,
+  "native_gui": false,
+  "hardware_click_test": false,
+  "hardware_test_skipped_by_user": false,
+  "updater_old_to_new": false,
+  "local_rust_pass": 24,
+  "failed_previous_version": "1.0.5",
+  "release_id": 425051841,
+  "release_url": "https://github.com/linhbv94/VXmp3/releases/tag/v1.0.6",
+  "public_manifest_exact": true,
+  "public_assets": [
+    {
+      "name": "latest.json",
+      "status": 200,
+      "size": 4397,
+      "sha256": "8006f3e5774334d90c48f8100b35e4cd30cd795bf99b11f817fced781cccc68a"
+    },
+    {
+      "name": "vxmp3_1.0.6_macos_intel.app.tar.gz",
+      "status": 200,
+      "size": 7091375,
+      "sha256": "62f2765aad9d88a8adec028444a5af767726b50122f39fb6d7111a70dd8e23a4"
+    },
+    {
+      "name": "vxmp3_1.0.6_macos_intel.dmg",
+      "status": 200,
+      "size": 7631859,
+      "sha256": "26c4c3ff788c308c6accd84df4db8fa0510611d20b1cdb2e01ea6a5d99897023"
+    },
+    {
+      "name": "vxmp3_1.0.6_macos_silicon.app.tar.gz",
+      "status": 200,
+      "size": 6700544,
+      "sha256": "7f9999cfe14d3f5796497eb628e24ebab16492d449b7d04a04f243641ee80ac4"
+    },
+    {
+      "name": "vxmp3_1.0.6_macos_silicon.dmg",
+      "status": 200,
+      "size": 7186009,
+      "sha256": "82e534e5c233240b84c8908c52af84b99c87fe022cad3b36b517f60c1a4f5c13"
+    },
+    {
+      "name": "vxmp3_1.0.6_windows_x64_setup.exe",
+      "status": 200,
+      "size": 4243439,
+      "sha256": "66b60c4036b15fbb5d5054ea9aeae846bbed2d80c9b98628074f1f9555d31972"
+    }
+  ],
+  "publish_run_id": 40455805309,
+  "signature_checks": {
+    "version": "1.0.6",
+    "verified": [
+      {
+        "platform": "windows-x86_64",
+        "name": "vxmp3_1.0.6_windows_x64_setup.exe",
+        "size": 4243439,
+        "sha256": "66b60c4036b15fbb5d5054ea9aeae846bbed2d80c9b98628074f1f9555d31972",
+        "signature": true,
+        "tamper_rejected": true
+      },
+      {
+        "platform": "windows-x86_64-nsis",
+        "name": "vxmp3_1.0.6_windows_x64_setup.exe",
+        "size": 4243439,
+        "sha256": "66b60c4036b15fbb5d5054ea9aeae846bbed2d80c9b98628074f1f9555d31972",
+        "signature": true,
+        "tamper_rejected": true
+      },
+      {
+        "platform": "darwin-aarch64",
+        "name": "vxmp3_1.0.6_macos_silicon.app.tar.gz",
+        "size": 6700544,
+        "sha256": "7f9999cfe14d3f5796497eb628e24ebab16492d449b7d04a04f243641ee80ac4",
+        "signature": true,
+        "tamper_rejected": true
+      },
+      {
+        "platform": "darwin-aarch64-app",
+        "name": "vxmp3_1.0.6_macos_silicon.app.tar.gz",
+        "size": 6700544,
+        "sha256": "7f9999cfe14d3f5796497eb628e24ebab16492d449b7d04a04f243641ee80ac4",
+        "signature": true,
+        "tamper_rejected": true
+      },
+      {
+        "platform": "darwin-x86_64",
+        "name": "vxmp3_1.0.6_macos_intel.app.tar.gz",
+        "size": 7091375,
+        "sha256": "62f2765aad9d88a8adec028444a5af767726b50122f39fb6d7111a70dd8e23a4",
+        "signature": true,
+        "tamper_rejected": true
+      },
+      {
+        "platform": "darwin-x86_64-app",
+        "name": "vxmp3_1.0.6_macos_intel.app.tar.gz",
+        "size": 7091375,
+        "sha256": "62f2765aad9d88a8adec028444a5af767726b50122f39fb6d7111a70dd8e23a4",
+        "signature": true,
+        "tamper_rejected": true
+      }
+    ]
+  },
+  "package_icons": [
+    {
+      "platform": "macos_silicon",
+      "version": "1.0.6",
+      "identifier": "com.vxmp3.desktop",
+      "architecture": "0x100000c",
+      "sdk": "27.0",
+      "icns_sha256": "0c21eb213e4f931a11a4a9e37efebde1d39604cd9bc6b3a679876632c9e2acb8",
+      "icon_matches": true,
+      "strict_codesign": true
+    },
+    {
+      "platform": "windows_x64",
+      "executable": "vx_mp3.exe",
+      "pe_machine": "AMD64",
+      "version_resource_contains": "1.0.6",
+      "icon_payloads": 7,
+      "icon_matches": true,
+      "ico_sha256": "ee5bad9ee02bfcc3b315f88352943a834cb79d896c113a8d1b3149f4a71d1708"
+    },
+    {
+      "platform": "macos_intel",
+      "version": "1.0.6",
+      "identifier": "com.vxmp3.desktop",
+      "architecture": "0x1000007",
+      "sdk": "27.0",
+      "icns_sha256": "0c21eb213e4f931a11a4a9e37efebde1d39604cd9bc6b3a679876632c9e2acb8",
+      "icon_matches": true,
+      "strict_codesign": true
+    }
+  ],
+  "dmg_checks": [
+    {
+      "platform": "macos_silicon",
+      "checksum": "VALID",
+      "dmg_icns_matches": true,
+      "identifier": "com.vxmp3.desktop",
+      "version": "1.0.6",
+      "strict_codesign": true
+    },
+    {
+      "platform": "macos_intel",
+      "checksum": "VALID",
+      "dmg_icns_matches": true,
+      "identifier": "com.vxmp3.desktop",
+      "version": "1.0.6",
+      "strict_codesign": true
+    }
+  ]
+}

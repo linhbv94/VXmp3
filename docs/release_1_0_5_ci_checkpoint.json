@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "conclusion": "failure",
+  "head_sha": "7c09363b269e378701c637b0373825dea6280323",
+  "url": "https://github.com/linhbv94/VXmp3/actions/runs/40451396033",
+  "jobs": [
+    {
+      "name": "prepare",
+      "status": "completed",
+      "conclusion": "success",
+      "active": []
+    },
+    {
+      "name": "build (xcode-27, aarch64-apple-darwin, app,dmg, macos_silicon)",
+      "status": "completed",
+      "conclusion": "failure",
+      "active": []
+    },
+    {
+      "name": "build (windows-2022, x86_64-pc-windows-msvc, nsis, windows_x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "active": []
+    },
+    {
+      "name": "build (xcode-27, x86_64-apple-darwin, app,dmg, macos_intel)",
+      "status": "completed",
+      "conclusion": "failure",
+      "active": []
+    },
+    {
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "skipped",
+      "active": []
+    }
+  ],
+  "repo": "linhbv94/VXmp3",
+  "run_id": 40451396033,
+  "observed_at_utc": "2026-10-27T05:00:49.047314+00:00"
+}

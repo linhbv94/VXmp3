@@ -10,3 +10,9 @@ Local migration trước đó có bundle SDK27/codesign và AppKit fixture 50 l�
 ## Phục hồi lần đầu CI
 
 Tag1.0.5 giữ bất biến/draft: CLI help regression thất bại vì wrapper kiểm artifact sau build --help. Wrapper1.0.6 phân biệt help/version trước Cargo separator, không chạy artifact gate cho lệnh không build; actual build vẫn kiểm SDK27 trước/sau. Regression help đặt CARGO_TARGET_DIR trống để không pass giả từ binary local cũ. Không sửa audio engine hoặc xoay tag cũ.
+
+## Kết quả public cuối — 2026-10-27
+
+- Build ba target và validate thành công; publish workflow 40455805309 thành công. Release stable/latest, manifest public khớp byte nội dung đã kiểm và đủ sáu asset HTTP200 không token.
+- Mọi signature/tamper rejection đạt; hai Mac SDK27.0, đúng architecture/ID/version/icon, strict codesign và hai DMG checksum/icon đạt; Windows x64/version/bảy ICO payload khớp.
+- Chưa chạy GUI Intel/Windows hoặc updater old→new thực tế trong lượt này. Tự đóng riêng lượt QA/release Codex sau public verification.
