@@ -1,6 +1,6 @@
 # Phát hành VXmp3
 
-Bản public đầu tiên: [1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0), macOS Apple Silicon và Intel. [QA và giới hạn](release_1_0_0_review.md). Bản stable hiện tại: [1.0.2](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.2), đã publish và kiểm tra public; bổ sung Windows x64 dùng engine Rust chung; trạng thái hiện tại xem [QA/checkpoint](release_1_0_2_review.md).
+Bản public đầu tiên: [1.0.0](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.0), macOS Apple Silicon và Intel. [QA và giới hạn](release_1_0_0_review.md). Bản stable hiện tại: [1.0.4](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.4), đã publish và kiểm tra public; icon mới cho Windows và hai bản Mac. Windows x64 dùng engine Rust chung từ 1.0.2; trạng thái hiện tại xem [QA/checkpoint](release_1_0_4_review.md).
 
 ## Người dùng
 

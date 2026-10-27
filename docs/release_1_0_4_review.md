@@ -12,4 +12,15 @@ Chưa mở GUI native hoặc test old→new updater trong lượt icon này. GUI
 
 ## Checkpoint
 
-Đang chuẩn bị tag; chưa publish. Kết quả CI/package/public sẽ cập nhật sau kiểm chứng.
+Tagv1.0.4 đã push tại `37aec67b25fc22fda70155ec63b020a7778e107f`; build run40440789215 đang chạy. Chưa publish; package/icon/signature/public sẽ cập nhật sau kiểm chứng.
+
+## Kết quả public
+
+Đã phát hành [VXmp3 1.0.4](https://github.com/linhbv94/VXmp3/releases/tag/v1.0.4), stable/latest. Tag `37aec67b25fc22fda70155ec63b020a7778e107f`; PR #3 đã merge. Build run **40440789215**, publish run **40443401639** đều success.
+
+- Manifest đủ platform, sáu asset đúng layout; xác minh Minisign cho mọi entry và từ chối gói bị đổi một byte.
+- Mac Silicon/Intel: đúng ARM64/x86_64, app ID/version; strict codesign và checksum DMG đạt. ICNS trong cả archive cập nhật và DMG byte-exact với icon mới.
+- Windows: executable x64, version 1.0.4; bảy payload icon trong PE byte-exact với ICO mới.
+- Sau publish, kiểm tra không đăng nhập: manifest public khớp bản đã xác minh và cả sáu asset HTTP 200. [Evidence](release_1_0_4_evidence.json), [CI checkpoint](release_1_0_4_ci_checkpoint.json).
+
+Giới hạn: lượt này kiểm regression/CI/package theo phạm vi icon, không mở lại GUI native và không chạy cập nhật từ bản cũ lên bản mới. Không lấy kết quả build để tuyên bố GUI Windows/Intel hoặc updater E2E đạt. Lượt Codex QA/release MP3 đã đóng theo quy ước.

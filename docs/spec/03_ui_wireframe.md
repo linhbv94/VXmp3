@@ -3,8 +3,8 @@
 > **Module:** Đặc tả Giao diện Người dùng, Bố cục Khung nhìn & Hệ thống Thành phần (UI Wireframe Specs)  
 > **Tài liệu cha:** [00_system_overview.md](00_system_overview.md)  
 > **Ngôn ngữ thiết kế:** Tuân thủ chuẩn [master_theme.md](../../../_summary/master_theme.md) và [desktop_ui_standards.md](../../../.agents/desktop_ui_standards.md) (VX Navy `#0f1117`, Electric Cyan `#06b6d4`, Amber `#fbbf24`)  
-> **Phiên bản:** 1.0.0  
-> **Ngày cập nhật:** 2026-10-13  
+> **Phiên bản:** 1.0.1  
+> **Ngày cập nhật:** 2026-10-27  
 
 ---
 
@@ -189,3 +189,7 @@ Toolbar 32px: tâm control native trùng tâm toolbar tại y=15.5pt từ đỉn
 ### Kích thước bezel và padding native — 2026-10-15
 
 12pt là đường kính bezel hiển thị, không phải kích thước NSButton view. Artifact GitHub hiện tại dùng SDK15.5: AppKit frame/bounds14×16, bezel12×12; ép frame12×12 với bounds14×14 làm bezel co còn khoảng10×10. Khôi phục frame/bounds/controlSize từ reference native cùng style mask rồi chỉ căn vị trí theo toolbar. Không suy kích thước từ bounds đã bị thay đổi ở lần focus trước. SDK26 có metrics khác; QA cần cùng SDK/profile với artifact phát hành.
+
+## Icon ứng dụng — 2026-10-27
+
+Bản1.0.4 dùng bộ icon mới từ [zicons](../../../_summary/zicons/README.md), prefix `ivxmp3`: ảnh nốt nhạc/bộ chỉnh âm cho VXmp3; ảnh xếp lớp/bộ lọc cho VXPhotos. Mỗi app chỉ dùng bộ riêng tương ứng. macOS dùng ICNS từ nguồn `_icns.png`; Windows dùng ICO7kích thước từ `_trans.png`. Native assets được theo dõi trong `src-tauri/icons/`. Giữ tên app, appID và updater key; không thay engine hoặc hành vi chỉnh sửa file. QA release phải đối chiếu ICNS trong cả DMG/archive cập nhật và ICO resources của executable Windows với source, không dùng cache Dock/Explorer để kết luận package.
