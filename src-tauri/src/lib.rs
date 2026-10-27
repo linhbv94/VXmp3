@@ -29,7 +29,7 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                 }
 
                 // Traffic lights buttons: 0 = Close, 1 = Miniaturize, 2 = Zoom
-                // Native visible diameter (SDK15.5) = 12pt, center spacing = 20pt.
+                // SDK27.0 native appearance, center spacing20pt; never force a12pt bezel.
                 // View dimensions include AppKit padding; never force the view to 12x12.
                 for (i, btn_id) in [0, 1, 2].iter().enumerate() {
                     let btn: id = msg_send![ns_window, standardWindowButton: *btn_id];
@@ -38,7 +38,7 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
                         if is_hidden == YES {
                             continue;
                         }
-                        // A 12pt bezel has native padding (SDK15.5: frame14x16).
+                        // Native geometry depends on SDK/OS; preserve the SDK27.0 AppKit reference.
                         // Restore pristine AppKit geometry, never scale the bezel to 12x12.
                         let reference: id = msg_send![class!(NSWindow),
                             standardWindowButton: *btn_id forStyleMask: style_mask];
