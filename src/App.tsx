@@ -9,7 +9,7 @@ import { TrackTable } from './components/TrackTable';
 import { Inspector } from './components/Inspector';
 import { MiniPlayer } from './components/MiniPlayer';
 import { SettingsModal, ThemeMode, SettingsTabType } from './components/SettingsModal';
-import { Language } from './i18n/app_translations';
+import { Language, t } from './i18n/app_translations';
 import { AudioTrack, TrackMetadata, ViewPreset } from './types';
 import { AudioAction, AudioProgressEvent, BatchProgress, TrackAudioProgress } from './types/audio_progress';
 import { addRecentItem } from './services/recent_service';
@@ -35,7 +35,7 @@ export default function App() {
   const [isApplyingGain, setIsApplyingGain] = useState(false);
   const [currentFolderPath, setCurrentFolderPath] = useState<string | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [settingsTab, setSettingsTab] = useState<SettingsTabType>('general');
+  const [settingsTab, setSettingsTab] = useState<SettingsTabType | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   useEffect(()=>{const guard=(event:Event)=>{if(operationLock.current||pendingRef.current.size>0)event.preventDefault();};window.addEventListener('vxmp3-before-update',guard);return()=>window.removeEventListener('vxmp3-before-update',guard);},[]);
@@ -45,8 +45,12 @@ export default function App() {
     return (localStorage.getItem('vx_theme') as ThemeMode) || 'system';
   });
   const [language, setLanguage] = useState<Language>(() => {
-    return (localStorage.getItem('vx_lang') as Language) || 'vi';
+    const saved = localStorage.getItem('vx_lang');
+    if (saved === 'vi' || saved === 'en') return saved;
+    const osLang = typeof navigator !== 'undefined' ? (navigator.language || '') : '';
+    return osLang.toLowerCase().startsWith('vi') ? 'vi' : 'en';
   });
+  const i18n = t(language);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -71,7 +75,25 @@ export default function App() {
   // Sync language
   useEffect(() => {
     localStorage.setItem('vx_lang', language);
+    if (isTauri()) {
+      invoke('set_app_language', { lang: language }).catch(() => {});
+    }
   }, [language]);
+
+  useEffect(() => {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === 'vx_lang' && (event.newValue === 'vi' || event.newValue === 'en')) {
+        setLanguage(event.newValue);
+      } else if (
+        event.key === 'vx_theme' &&
+        (event.newValue === 'system' || event.newValue === 'dark' || event.newValue === 'light' || event.newValue === 'black')
+      ) {
+        setTheme(event.newValue);
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
 
   // Nạp lại dữ liệu thư mục hiện tại sau khi Undo hoặc cập nhật
   const refreshCurrentDirectory = async (targetFolder?: string) => {
@@ -123,10 +145,12 @@ export default function App() {
         setFocusedId(res.tracks[0]?.id ?? null);
         setPendingChanges(new Map());
         addRecentItem('vxmp3_recent_folders', selectedPath);
-        showToast(`Đã nạp ${res.tracks.length} bài hát${res.unsupported_count ? `; ${res.unsupported_count} tệp không đọc được` : ' từ thư mục'}`);
+        showToast(res.unsupported_count
+          ? i18n.toast_loaded_tracks_unsupported.replace('{count}', String(res.tracks.length)).replace('{unsupported}', String(res.unsupported_count))
+          : i18n.toast_loaded_tracks.replace('{count}', String(res.tracks.length)));
       }
     } catch (err: any) {
-      showToast(`Lỗi quét thư mục: ${err}`);
+      showToast(i18n.toast_scan_error.replace('{error}', String(err)));
     }
   };
 
@@ -153,10 +177,12 @@ export default function App() {
         setFocusedId(res.tracks[0]?.id ?? null);
         setPendingChanges(new Map());
         addRecentItem('vxmp3_recent_folders', targetPath);
-        showToast(`Đã nạp ${res.tracks.length} bài hát${res.unsupported_count ? `; ${res.unsupported_count} tệp không đọc được` : ' từ thư mục'}`);
+        showToast(res.unsupported_count
+          ? i18n.toast_loaded_tracks_unsupported.replace('{count}', String(res.tracks.length)).replace('{unsupported}', String(res.unsupported_count))
+          : i18n.toast_loaded_tracks.replace('{count}', String(res.tracks.length)));
       }
     } catch (err: any) {
-      showToast(`Lỗi quét thư mục: ${err}`);
+      showToast(i18n.toast_scan_error.replace('{error}', String(err)));
     }
   };
 
@@ -245,7 +271,7 @@ export default function App() {
         }
         return next;
       });
-      showToast('Đã gắn ảnh bìa mới (Bấm Lưu để commit)');
+      showToast(i18n.toast_cover_staged);
     };
     reader.readAsDataURL(file);
   };
@@ -261,7 +287,7 @@ export default function App() {
       }
       return next;
     });
-    showToast('Đã đánh dấu gỡ bỏ ảnh bìa');
+    showToast(i18n.toast_cover_removed);
   };
 
   // Lưu các thay đổi thẻ Pending (Cmd/Ctrl + S)
@@ -317,12 +343,15 @@ export default function App() {
       });
 
       if (res.failed_count > 0) {
-        showToast(`Đã lưu ${res.success_count} bài, thất bại ${res.failed_count} bài! ${res.errors?.[0]?.message ?? 'Vui lòng kiểm tra lại.'}`);
+        showToast(i18n.toast_save_partial
+          .replace('{success}', String(res.success_count))
+          .replace('{failed}', String(res.failed_count))
+          .replace('{detail}', res.errors?.[0]?.message ?? ''));
       } else {
-        showToast(`Đã lưu thành công thẻ cho ${res.success_count} bài hát`);
+        showToast(i18n.toast_save_success.replace('{count}', String(res.success_count)));
       }
     } catch (err: any) {
-      showToast(`Lỗi lưu thẻ: ${err}`);
+      showToast(i18n.toast_save_error.replace('{error}', String(err)));
     } finally {
       operationLock.current = false;
       setIsSaving(false);
@@ -332,9 +361,9 @@ export default function App() {
   const progressChannel = (action: AudioAction, targets: AudioTrack[]) => {
     setAudioStates((prev) => ({ ...prev, [action]: new Map(tracks.map((t) => [t.path, {
       action, file_path: t.path, status: targets.some((target) => target.id === t.id) ? 'queued' : 'skipped',
-      percent: 0, stage: targets.some((target) => target.id === t.id) ? 'Chờ' : 'Ngoài phạm vi lần chạy',
+      percent: 0, stage: targets.some((target) => target.id === t.id) ? i18n.db_status_queued : i18n.db_status_skipped,
     } as TrackAudioProgress])) }));
-    setBatchProgress({ action, total: targets.length, completed: 0, fraction: 0, filename: '', stage: 'Bắt đầu', running: true });
+    setBatchProgress({ action, total: targets.length, completed: 0, fraction: 0, filename: '', stage: i18n.db_status_processing, running: true });
     const channel = new Channel<AudioProgressEvent>();
     channel.onmessage = (event) => {
       setAudioStates((prev) => ({ ...prev, [action]: new Map(prev[action]).set(event.file_path, event) }));
@@ -359,7 +388,7 @@ export default function App() {
     setBatchProgress((prev) => prev ? { ...prev, running: false } : null);
     setAudioStates((prev) => {
       const finish = (states: Map<string, TrackAudioProgress>) => new Map([...states].map(([path, state]) => [path,
-        state.status === 'queued' || state.status === 'running' ? { ...state, status: 'failed' as const, message: 'Lượt xử lý bị gián đoạn; chưa xác nhận hoàn tất' } : state]));
+        state.status === 'queued' || state.status === 'running' ? { ...state, status: 'failed' as const, message: i18n.db_status_error } : state]));
       return { measure: finish(prev.measure), gain: finish(prev.gain) };
     });
   };
@@ -367,7 +396,7 @@ export default function App() {
   // Phân tích độ lớn âm lượng EBU R128 thật
   const handleAnalyzeLoudness = async () => {
     if (tracks.length === 0) {
-      showToast('Vui lòng mở thư mục chứa nhạc trước khi đo âm lượng');
+      showToast(i18n.toast_open_before_analyze);
       return;
     }
     if (operationLock.current) return;
@@ -413,9 +442,9 @@ export default function App() {
           return { ...t, loudness: null };
         })
       );
-      showToast(`Đã đo xong âm lượng thật cho ${results.length} bài hát${response.errors.length ? `; ${response.errors.length} lỗi: ${response.errors[0].message}` : ''}`);
+      showToast(`${i18n.toast_analyze_done.replace('{count}', String(results.length))}${response.errors.length ? `; ${response.errors.length}: ${response.errors[0].message}` : ''}`);
     } catch (err: any) {
-      showToast(`Lỗi đo âm lượng: ${err}`);
+      showToast(i18n.toast_analyze_error.replace('{error}', String(err)));
     } finally {
       finishProgress();
       setIsAnalyzing(false);
@@ -426,7 +455,7 @@ export default function App() {
   // 1-Click Cân bằng Lossless MP3Gain
   const handleApplyLosslessGain = async (scope: 'all' | 'selected' = 'all') => {
     if (tracks.length === 0) {
-      showToast('Không có bài hát nào để cân bằng âm lượng');
+      showToast(i18n.toast_no_tracks_gain);
       return;
     }
 
@@ -434,7 +463,7 @@ export default function App() {
 
     const mp3Tracks = targetTracks.filter((t) => t.extension === 'mp3');
     if (mp3Tracks.length === 0) {
-      showToast('Chỉ tệp MP3 mới hỗ trợ cân bằng âm lượng Lossless không re-encode');
+      showToast(i18n.toast_only_mp3_gain);
       return;
     }
 
@@ -510,10 +539,14 @@ export default function App() {
       }
 
       const count = (status: string) => res.outcomes.filter((o) => o.status === status).length;
-      showToast(`Cân bằng: ${count('changed')} đã chỉnh · ${count('unchanged')} không cần đổi · ${count('limited')} giới hạn · ${count('failed')} lỗi`);
+      showToast(i18n.toast_gain_summary
+        .replace('{changed}', String(count('changed')))
+        .replace('{unchanged}', String(count('unchanged')))
+        .replace('{limited}', String(count('limited')))
+        .replace('{failed}', String(count('failed'))));
 
     } catch (err: any) {
-      showToast(`Lỗi cân bằng âm lượng: ${err}`);
+      showToast(i18n.toast_gain_error.replace('{error}', String(err)));
     } finally {
       finishProgress();
       setIsApplyingGain(false);
@@ -524,7 +557,7 @@ export default function App() {
   // Hoàn tác (Undo) thật từ Journal
   const handleUndo = async () => {
     if (operationLock.current) return;
-    if (pendingRef.current.size > 0) { showToast('Hãy lưu các chỉnh sửa thẻ trước khi hoàn tác'); return; }
+    if (pendingRef.current.size > 0) { showToast(i18n.toast_save_before_undo); return; }
     operationLock.current = true;
     setIsUndoing(true);
     try {
@@ -538,22 +571,22 @@ export default function App() {
 
       if (res.success || res.restored_count > 0) {
         if (res.restored_count > 0) {
-          showToast(`Đã hoàn tác (${res.operation_type}) cho ${res.restored_count} tệp`);
+          showToast(i18n.toast_undo_done.replace('{op}', res.operation_type).replace('{count}', String(res.restored_count)));
         } else {
-          showToast(`Không có tệp nào cần phục hồi`);
+          showToast(i18n.toast_undo_empty);
         }
         await refreshCurrentDirectory();
         setAudioStates({ measure: new Map(), gain: new Map() });
         setBatchProgress(null);
       }
-      if (res.errors?.length) showToast(`Hoàn tác ${res.restored_count} tệp; ${res.errors.join('; ')}`);
+      if (res.errors?.length) showToast(`${res.restored_count}: ${res.errors.join('; ')}`);
     } catch (err: any) {
-      showToast(`Không thể hoàn tác: ${err}`);
+      showToast(i18n.toast_undo_error.replace('{error}', String(err)));
     } finally { operationLock.current = false; setIsUndoing(false); }
   };
 
-  const openSettings = (tab: SettingsTabType = 'general') => {
-    setSettingsTab(tab);
+  const openSettings = (tab?: SettingsTabType) => {
+    setSettingsTab(tab ?? null);
     setIsSettingsOpen(true);
   };
   const selectAll = () => {
@@ -655,14 +688,15 @@ export default function App() {
         onViewPresetChange={setViewPreset}
         onOpenSettings={() => openSettings()}
         totalTracks={tracks.length}
+        language={language}
       />
 
       {batchProgress && <div className="shrink-0 bg-slate-100 dark:bg-white/[0.03]" aria-live="polite">
         <div className="flex items-center justify-between gap-3 px-4 py-1 text-[10px] text-slate-600 dark:text-slate-400">
-          <span className="truncate">{batchProgress.running ? `${batchProgress.action === 'measure' ? 'Đo dB' : 'Cân bằng'} · ${batchProgress.filename} · ${batchProgress.stage}` : 'Đã kết thúc lượt xử lý; xem kết quả từng bài'}</span>
+          <span className="truncate">{batchProgress.running ? `${batchProgress.action === 'measure' ? i18n.batch_measure_prefix : i18n.batch_gain_prefix} · ${batchProgress.filename} · ${batchProgress.stage}` : i18n.batch_finished}</span>
           <span className="shrink-0 font-mono">{batchProgress.completed}/{batchProgress.total} · {Math.floor(batchProgress.fraction * 100)}%</span>
         </div>
-        <div role="progressbar" aria-label="Tiến trình tổng" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.floor(batchProgress.fraction * 100)} className="h-[2px] bg-slate-200 dark:bg-white/10">
+        <div role="progressbar" aria-label={i18n.batch_progress_aria} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.floor(batchProgress.fraction * 100)} className="h-[2px] bg-slate-200 dark:bg-white/10">
           <div className={`h-full transition-[width] duration-100 ${batchProgress.action === 'measure' ? 'bg-cyan-500' : 'bg-amber-500'}`} style={{ width: `${batchProgress.fraction * 100}%` }} />
         </div>
       </div>}
@@ -682,6 +716,7 @@ export default function App() {
           measureStates={audioStates.measure}
           gainStates={audioStates.gain}
           disabled={busy}
+          language={language}
         />
 
         <div inert={busy} className="flex shrink-0 min-h-0">
@@ -691,12 +726,13 @@ export default function App() {
           onFieldChange={handleFieldChange}
           onCoverArtChange={handleCoverArtChange}
           onRemoveCoverArt={handleRemoveCoverArt}
+          language={language}
         />
         </div>
       </div>
 
       {/* 4. Bottom Mini Player */}
-      <MiniPlayer currentTrack={focusedTrack} targetDb={targetDb} />
+      <MiniPlayer currentTrack={focusedTrack} targetDb={targetDb} language={language} />
 
       {/* 5. Settings Modal */}
       <SettingsModal

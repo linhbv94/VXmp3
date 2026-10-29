@@ -8,6 +8,7 @@ import {
   Music2
 } from 'lucide-react';
 import { AudioTrack, ViewPreset, TrackMetadata } from '../types';
+import { Language, t } from '../i18n/app_translations';
 
 interface TrackTableProps {
   tracks: AudioTrack[];
@@ -22,6 +23,7 @@ interface TrackTableProps {
   measureStates: Map<string, TrackAudioProgress>;
   gainStates: Map<string, TrackAudioProgress>;
   disabled: boolean;
+  language?: Language;
 }
 
 export const TrackTable: React.FC<TrackTableProps> = ({
@@ -37,7 +39,9 @@ export const TrackTable: React.FC<TrackTableProps> = ({
   measureStates,
   gainStates,
   disabled,
+  language = 'vi',
 }) => {
+  const i18n = t(language);
   const parentRef = useRef<HTMLDivElement>(null);
 
   // Trạng thái ô đang inline edit
@@ -159,9 +163,9 @@ export const TrackTable: React.FC<TrackTableProps> = ({
     return (
       <div className="flex-1 flex flex-col items-center justify-center text-slate-500 select-none p-8 text-center">
         <Music2 size={48} className="text-slate-600 mb-3 stroke-[1.5]" />
-        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Danh sách tệp nhạc trống</p>
+        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{i18n.empty_table_title}</p>
         <p className="text-xs text-slate-600 mt-1">
-          Kéo thả thư mục chứa tệp MP3 vào đây hoặc bấm nút "Mở thư mục" trên thanh tiêu đề.
+          {i18n.empty_table_desc}
         </p>
       </div>
     );
@@ -174,28 +178,28 @@ export const TrackTable: React.FC<TrackTableProps> = ({
       <div style={{ minWidth: viewPreset === 'all' ? 1370 : viewPreset === 'tags' ? 1010 : 680 }} className="h-9 border-b border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-black/40 text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center px-3 z-10 shrink-0">
         <div className="w-10 text-center">#</div>
         <div className="w-10 text-center">🖼️</div>
-        <div className="w-56 px-2 truncate">Tên tệp</div>
+        <div className="w-56 px-2 truncate">{i18n.col_filename}</div>
 
         {/* Các cột Tag (Ẩn ở chế độ mp3gain) */}
         {viewPreset !== 'mp3gain' && (
           <>
-            <div className="w-20 px-2 truncate">Thẻ</div>
-            <div className="flex-1 min-w-[140px] px-2 truncate">Tiêu đề (Title)</div>
-            <div className="w-36 px-2 truncate">Nghệ sĩ (Artist)</div>
-            <div className="w-36 px-2 truncate">Album</div>
-            <div className="w-16 text-center">Năm</div>
-            <div className="w-24 px-2 truncate">Thể loại</div>
+            <div className="w-20 px-2 truncate">{i18n.col_tag}</div>
+            <div className="flex-1 min-w-[140px] px-2 truncate">{i18n.col_title}</div>
+            <div className="w-36 px-2 truncate">{i18n.col_artist}</div>
+            <div className="w-36 px-2 truncate">{i18n.col_album}</div>
+            <div className="w-16 text-center">{i18n.col_year}</div>
+            <div className="w-24 px-2 truncate">{i18n.col_genre}</div>
           </>
         )}
 
         {/* Các cột Âm lượng MP3Gain (Ẩn ở chế độ tags) */}
         {viewPreset !== 'tags' && (
           <>
-            <div className="w-20 text-right px-2">dB hiện tại</div>
-            <div className="w-20 text-right px-2">Mục tiêu</div>
-            <div className="w-20 text-right px-2">Gain chênh</div>
-            <div className="w-16 text-center">Nấc MP3</div>
-            <div className="w-16 text-center">⚠️ Clip</div>
+            <div className="w-20 text-right px-2">{i18n.col_current_db}</div>
+            <div className="w-20 text-right px-2">{i18n.col_target_db}</div>
+            <div className="w-20 text-right px-2">{i18n.col_gain_diff}</div>
+            <div className="w-16 text-center">{i18n.col_mp3_steps}</div>
+            <div className="w-16 text-center">{i18n.col_clip}</div>
           </>
         )}
       </div>
@@ -300,7 +304,7 @@ export const TrackTable: React.FC<TrackTableProps> = ({
                         />
                       ) : (
                         <span className={pendingPatch?.title !== undefined ? 'text-cyan-300 font-medium' : ''}>
-                          {title || <span className="text-slate-600 italic">Trống</span>}
+                          {title || <span className="text-slate-600 italic">{i18n.cell_empty}</span>}
                         </span>
                       )}
                     </div>
@@ -419,10 +423,10 @@ export const TrackTable: React.FC<TrackTableProps> = ({
                 {viewPreset !== 'tags' && (
                   <>
                     <div className="w-20 shrink-0 px-1">
-                      <DbLevelCell value={currentDb} progress={measureStates.get(track.path)} />
+                      <DbLevelCell value={currentDb} progress={measureStates.get(track.path)} language={language} />
                     </div>
                     <div className="w-20 shrink-0 px-1">
-                      <DbLevelCell value={targetDb} target progress={gainStates.get(track.path)} />
+                      <DbLevelCell value={targetDb} target progress={gainStates.get(track.path)} language={language} />
                     </div>
 
                     {/* Gain chênh lệch */}
@@ -450,13 +454,13 @@ export const TrackTable: React.FC<TrackTableProps> = ({
                     {/* Cảnh báo Clipping */}
                     <div className="w-16 flex items-center justify-center">
                       {!track.loudness ? (
-                        <span title="Chưa đo âm lượng">—</span>
+                        <span title={i18n.clip_unmeasured}>—</span>
                       ) : hasClipping ? (
-                        <span title="Nguy cơ vỡ tiếng: Dự báo đỉnh sóng vượt 0.0 dBTP">
+                        <span title={i18n.clip_risk}>
                           <AlertTriangle size={14} className="text-amber-400" />
                         </span>
                       ) : (
-                        <span title="An toàn (Không vỡ tiếng)">
+                        <span title={i18n.clip_safe}>
                           <CheckCircle2 size={13} className="text-emerald-500/50" />
                         </span>
                       )}

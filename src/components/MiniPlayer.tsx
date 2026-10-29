@@ -8,13 +8,16 @@ import {
   Music
 } from 'lucide-react';
 import { AudioTrack } from '../types';
+import { Language, t } from '../i18n/app_translations';
 
 interface MiniPlayerProps {
   currentTrack: AudioTrack | null;
   targetDb: number;
+  language?: Language;
 }
 
-export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: _targetDb }) => {
+export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: _targetDb, language = 'vi' }) => {
+  const i18n = t(language);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -120,7 +123,7 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: 
       <footer className="h-14 border-t border-slate-200 dark:border-white/10 glass-panel px-4 flex items-center justify-between text-xs text-slate-500 select-none shrink-0 z-30">
         <div className="flex items-center gap-2">
           <Music size={16} className="text-slate-600" />
-          <span>Bấm Space để nghe thử bài hát đang chọn</span>
+          <span>{i18n.player_empty_hint}</span>
         </div>
       </footer>
     );
@@ -146,7 +149,7 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: 
             {currentTrack.metadata.title || currentTrack.filename}
           </p>
           <p className="text-[10px] text-slate-600 dark:text-slate-400 truncate">
-            {currentTrack.metadata.artist || 'Chưa rõ nghệ sĩ'}
+            {currentTrack.metadata.artist || i18n.player_unknown_artist}
           </p>
         </div>
       </div>
@@ -158,7 +161,7 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: 
             type="button"
             onClick={togglePlay}
             className="p-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-black transition-all cursor-pointer shadow-md shadow-cyan-500/20"
-            title={isPlaying ? 'Tạm dừng (Space)' : 'Phát nhạc (Space)'}
+            title={isPlaying ? i18n.player_pause : i18n.player_play}
           >
             {isPlaying ? <Pause size={14} className="fill-current" /> : <Play size={14} className="fill-current ml-0.5" />}
           </button>
@@ -185,10 +188,10 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: 
           type="button"
           disabled={true}
           className="px-2.5 py-1 rounded-full text-[10px] font-semibold flex items-center gap-1.5 border bg-slate-100 dark:bg-white/5 text-slate-600 border-white/5 cursor-not-allowed opacity-50 transition-all"
-          title="Chưa hỗ trợ A/B Gain (chờ engine đo EBU R128 thật)"
+          title={i18n.player_ab_disabled_title}
         >
           <SlidersHorizontal size={11} />
-          <span>A/B Gain (Chưa hỗ trợ)</span>
+          <span>{i18n.player_ab_disabled}</span>
         </button>
 
         {/* Volume Slider */}
@@ -202,7 +205,7 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({ currentTrack, targetDb: 
             value={volume}
             onChange={(e) => setVolume(parseFloat(e.target.value))}
             className="w-16 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-cyan-400"
-            title="Âm lượng nghe thử"
+            title={i18n.player_volume_title}
           />
         </div>
       </div>

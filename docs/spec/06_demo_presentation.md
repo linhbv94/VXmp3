@@ -122,4 +122,4 @@ Kịch bản demo được thiết kế nhằm chứng minh toàn bộ các giá
 | Biến đổi Gain Lossless tuyệt đối cho MP3 | Chưa kiểm chứng | Chờ kiểm chứng parser MPEG side info & bitstream hash |
 | Cơ chế Two-Phase Write an toàn | Chưa kiểm chứng | Chờ kiểm chứng crash injection phase PREPARED/COMMITTED |
 | Hoàn tác (Undo) qua Operation Journal | Chưa kiểm chứng | Chờ kiểm thử hoàn tác thẻ và MP3GAIN_UNDO |
-| Settings modal chuẩn zTools | Chưa kiểm chứng | Chờ dựng UI React với Master Theme |
+| Settings modal chuẩn VXUtilities | Chưa kiểm chứng | Chờ dựng UI React với Master Theme |

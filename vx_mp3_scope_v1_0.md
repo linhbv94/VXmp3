@@ -165,7 +165,7 @@
 |---|---|---|
 | **Vỏ Desktop** | Tauri v2 (Rust) | Quản lý cửa sổ, native file dialogs, IPC streaming, đa nền tảng |
 | **Giao diện** | React 19 / 18 + TypeScript + Vite | Giao diện bảng tính linh hoạt, state management mượt mà |
-| **Styling & Theme** | Tailwind CSS + Lucide Icons | Tuân thủ [master_theme.md](../_summary/master_theme.md) và [desktop_ui_standards.md](../.agents/desktop_ui_standards.md) |
+| **Styling & Theme** | Tailwind CSS + Lucide Icons | Tuân thủ [master_theme.md](../_summary/standard_docs/master_theme.md) và [desktop_ui_standards.md](../_summary/standard_docs/desktop_ui_standards.md) |
 | **Ảo hóa Bảng** | `@tanstack/react-virtual` | Render mượt mà 5,000+ bài hát mà không làm chậm DOM |
 | **Metadata Core** | Rust crate `lofty` | Đọc/ghi siêu dữ liệu ID3v1, ID3v2.3/v2.4, Vorbis, APEv2, MP4 atoms cực nhanh |
 | **Loudness Engine** | Rust crate `ebur128` (hoặc `libebur128`) | Đo lường chuẩn ITU-R BS.1770-4 / EBU R128 |

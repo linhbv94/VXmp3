@@ -19,7 +19,7 @@
 }
 
 /* ==========================================================================
-   1. Dark Theme (Standard Slate Navy #0f1117 - zTools Master Theme Default)
+   1. Dark Theme (Standard Slate Navy #0f1117 - VXUtilities Master Theme Default)
    ========================================================================== */
 .dark body {
   background-color: #0f1117;
@@ -126,7 +126,7 @@
 
 /* OLED surfaces retain dark text semantics and pure black canvas. */
 .black #root > div { background-color: #000; }
-.black [role="dialog"] { background-color: #080808; }
+.black [role="dialog"]:not(.vx_settings_ui) { background-color: #080808; }
 
 /* Progress comes from audio samples/commit events. Stripes only signal activity. */
 .db-loading-fill {

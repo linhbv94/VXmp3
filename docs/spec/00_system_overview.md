@@ -6,7 +6,7 @@
 > **Ngày cập nhật:** 2026-10-15
 > **Nền tảng mục tiêu:** macOS (Apple Silicon & Intel) + Windows 11+ (x64)  
 > **Kiến trúc phân tầng:** Kiến trúc 3 tầng phân định rõ ràng:
-> - **Tầng 1 (UI Shell — 95% Dùng chung):** Tauri v2 WebView (React 19 / 18 + TypeScript + Vite + Tailwind CSS) tuân thủ nghiêm ngặt [master_theme.md](../../../_summary/master_theme.md) và [desktop_ui_standards.md](../../../.agents/desktop_ui_standards.md).
+> - **Tầng 1 (UI Shell — 95% Dùng chung):** Tauri v2 WebView (React 19 / 18 + TypeScript + Vite + Tailwind CSS) tuân thủ nghiêm ngặt [master_theme.md](../../../_summary/standard_docs/master_theme.md) và [desktop_ui_standards.md](../../../_summary/standard_docs/desktop_ui_standards.md).
 > - **Tầng 2 (Audio & Metadata Core — 100% Dùng chung):** Rust Native Engine:
 >   - Đọc/ghi siêu dữ liệu định dạng phong phú qua crate `lofty` (ID3v1, ID3v2.3/v2.4, Vorbis Comments, APEv2, MP4 atoms).
 >   - Phân tích độ lớn âm thanh theo chuẩn EBU R128 / ITU-R BS.1770-4 qua crate `ebur128`.

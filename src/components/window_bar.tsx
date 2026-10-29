@@ -1,3 +1,4 @@
+import {isTauri} from '@tauri-apps/api/core';
 import React, { useState, useRef, useEffect } from 'react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { 
@@ -56,7 +57,7 @@ export const WindowBar: React.FC<WindowBarProps> = ({
   }, []);
 
   useEffect(() => {
-    if (!isMac) {
+    if (!isMac && isTauri()) {
       getCurrentWindow().setDecorations(false).catch(() => {});
     }
   }, [isMac]);
@@ -121,28 +122,27 @@ export const WindowBar: React.FC<WindowBarProps> = ({
   return (
     <div
       data-tauri-drag-region
+      data-vx-titlebar-root
+      data-vx-titlebar-profile="standard_32"
       onMouseDown={handleMouseDown}
       style={{ WebkitAppRegion: 'drag' } as React.CSSProperties}
       className={`h-8 w-full bg-slate-50/95 dark:bg-[#0f1117]/95 border-b border-slate-200 dark:border-white/10 flex items-center justify-between ${
         isMac ? 'pl-[82px] pr-3' : 'pl-2 pr-2'
       } select-none text-xs shrink-0 z-40 backdrop-blur-md`}
     >
-      {/* Left: Brand (Mac) or Menu Bar (Windows) */}
-      <div className="flex items-center gap-2">
-        {/* macOS Brand: Icon 16px + Gap 6px + App Title (weight 600, 12px system font) */}
-        {isMac && (
-          <div className="flex items-center gap-1.5 shrink-0 cursor-default">
-            <Volume2 className="w-4 h-4 text-cyan-500 dark:text-cyan-400 shrink-0" />
-            <span className="text-slate-900 dark:text-white text-xs font-semibold shrink-0 leading-none">
-              {i18n.app_title}
-            </span>
-          </div>
-        )}
+      {/* Left: Brand + Menus (Windows) */}
+      <div className="flex items-center gap-3">
+        <div data-vx-titlebar-brand className="flex items-center gap-1.5 shrink-0 cursor-default">
+          <Volume2 data-vx-titlebar-glyph className="w-4 h-4 text-cyan-500 dark:text-cyan-400 shrink-0 stroke-[2]" />
+          <span data-vx-titlebar-title data-vx-titlebar-name className="text-slate-900 dark:text-white text-xs font-semibold shrink-0 leading-4 tracking-normal">
+            {i18n.app_title}
+          </span>
+        </div>
 
-        {/* Windows Menus (Icon & Title hidden per desktop UI standard) */}
+        {/* Windows Menus */}
         {!isMac && (
           <div
-            ref={menuRef}
+            ref={menuRef} data-vx-windows-menu
             data-no-drag
             style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
             className="flex items-center gap-0.5 text-slate-700 dark:text-slate-300 shrink-0"
@@ -198,15 +198,16 @@ export const WindowBar: React.FC<WindowBarProps> = ({
       {/* Right Controls */}
       <div
         data-no-drag
+        data-vx-titlebar-actions
         style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
-        className="flex items-center gap-1.5"
+        className="flex items-center gap-2"
       >
         {/* Open Folder Button with Recent Dropdown */}
         <RecentButton
           type="folder"
           storageKey="vxmp3_recent_folders"
-          label={i18n.open_folder || 'Mở thư mục'}
-          title="Mở thư mục nhạc (Cmd/Ctrl+O)"
+          label={i18n.open_folder}
+          title={i18n.open_folder_tooltip}
           icon={<FolderOpen className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 shrink-0" />}
           disabled={busy}
           onMainClick={onOpenFolder}
@@ -215,17 +216,19 @@ export const WindowBar: React.FC<WindowBarProps> = ({
             else onOpenFolder();
           }}
           dropdownAlign="right"
-          emptyLabel="Chưa có thư mục gần đây"
+          emptyLabel={i18n.recent_folders_empty}
         />
 
         {/* Settings Button */}
         <button
           type="button"
+          data-vx-titlebar-settings
           onClick={onOpenSettings}
-          className="p-1 rounded hover:bg-slate-200/70 dark:hover:bg-white/10 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors leading-none cursor-pointer"
+          aria-label={i18n.settings}
+          className="w-7 h-7 rounded-[6px] flex items-center justify-center hover:bg-slate-200/70 dark:hover:bg-white/10 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors leading-none cursor-pointer"
           title={i18n.settings}
         >
-          <Settings className="w-3.5 h-3.5" />
+          <Settings className="w-4 h-4 stroke-[2]" />
         </button>
 
         {/* Windows style window controls (Hidden on macOS) */}
@@ -235,7 +238,7 @@ export const WindowBar: React.FC<WindowBarProps> = ({
               type="button"
               onClick={handleMinimize}
               className="p-1 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded transition-colors"
-              title="Minimize"
+              title={i18n.win_minimize}
             >
               <Minus className="w-3.5 h-3.5" />
             </button>
@@ -243,7 +246,7 @@ export const WindowBar: React.FC<WindowBarProps> = ({
               type="button"
               onClick={handleMaximize}
               className="p-1 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded transition-colors"
-              title="Maximize / Restore"
+              title={i18n.win_maximize}
             >
               <Square className="w-3 h-3" />
             </button>
@@ -251,7 +254,7 @@ export const WindowBar: React.FC<WindowBarProps> = ({
               type="button"
               onClick={handleClose}
               className="p-1 hover:bg-rose-500 hover:text-white text-slate-500 dark:text-slate-400 rounded transition-colors"
-              title="Close"
+              title={i18n.win_close}
             >
               <X className="w-3.5 h-3.5" />
             </button>

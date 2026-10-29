@@ -1,8 +1,8 @@
 # UI & Wireframe Specification: VXmp3 (`_spec3_ui_wireframe`)
 
-> **Module:** Đặc tả Giao diện Người dùng, Bố cục Khung nhìn & Hệ thống Thành phần (UI Wireframe Specs)  
-> **Tài liệu cha:** [00_system_overview.md](00_system_overview.md)  
-> **Ngôn ngữ thiết kế:** Tuân thủ chuẩn [master_theme.md](../../../_summary/master_theme.md) và [desktop_ui_standards.md](../../../.agents/desktop_ui_standards.md) (VX Navy `#0f1117`, Electric Cyan `#06b6d4`, Amber `#fbbf24`)  
+> **Module:** Đặc tả Giao diện Người dùng, Bố cục Khung nhìn & Hệ thống Thành phần (UI Wireframe Specs)
+> **Tài liệu cha:** [00_system_overview.md](00_system_overview.md)
+> **Ngôn ngữ thiết kế:** Tuân thủ chuẩn [master_theme.md](../../../_summary/standard_docs/master_theme.md) và [desktop_ui_standards.md](../../../_summary/standard_docs/desktop_ui_standards.md) (VX Navy `#0f1117`, Electric Cyan `#06b6d4`, Amber `#fbbf24`)
 > **Phiên bản:** 1.0.1
 > **Ngày cập nhật:** 2026-10-27
 
@@ -11,7 +11,7 @@
 ## 1. Cấu trúc Bố cục Toàn màn hình (Overall Layout Wireframe)
 
 Giao diện ứng dụng được cấu trúc theo luồng làm việc chuẩn:
-1. **Top Window Bar (32px chuẩn hoá zTools):** Tích hợp tiêu đề, kéo thả cửa sổ, menu OS (Mac/Win) và nút Cài đặt.
+1. **Top Window Bar (32px chuẩn hoá VXUtilities):** Tích hợp tiêu đề, kéo thả cửa sổ, menu OS (Mac/Win) và nút Cài đặt.
 2. **Top Control Bar (Thanh điều khiển trung tâm ngay dưới Titlebar):**
    - Nút `[📂 Mở thư mục (Open Folder)]` (kèm phím tắt `Cmd/Ctrl+O`).
    - Ô thiết lập mức âm lượng chuẩn: `Âm lượng chuẩn: [ 89.0 ] dB SPL` (cho phép nhập số hoặc chỉnh nhanh 89.0 / 92.0 / 96.0).
@@ -126,30 +126,31 @@ Giao diện ứng dụng được cấu trúc theo luồng làm việc chuẩn:
 
 ## 3. Cấu trúc Modal Cài đặt Chuẩn hóa (Settings Modal Specs)
 
-Tuân thủ nghiêm ngặt quy chuẩn cấu trúc Settings tại [desktop_ui_standards.md](../../../.agents/desktop_ui_standards.md):
+Tuân thủ nghiêm ngặt quy chuẩn cấu trúc Settings tại [desktop_ui_standards.md](../../../_summary/standard_docs/desktop_ui_standards.md):
 - Chiều rộng `max-w-2xl` (672px), chiều cao tối đa `calc(100dvh - 32px)`.
 - Header có thuộc tính kéo thả cửa sổ `data-tauri-drag-region`.
 - Sidebar trái có chiều rộng `w-48` (192px), chia làm 2 nhóm ngăn cách bởi đường kẻ mờ:
 
 ### 3.1. Nhóm 1: Tính năng Cốt lõi (Core Settings)
-1. **Cài đặt Chung (General):** Khởi động cùng hệ thống, ngôn ngữ giao diện (Tiếng Việt / English), chủ đề (Dark / Light / Hệ thống).
+1. **Cài đặt Chung (General — `ST-01…ST-10`, `BI-01…BI-12`):**
+   - **Chỉ chứa đúng 2 nhóm theo thứ tự `G1 → G2`:**
+     - **G1 — Giao diện & Màu sắc:** `Theo hệ thống` → `Tối` → `Sáng` → `Đen tuyền` (không kèm mã HEX trong nhãn hiển thị).
+     - **G2 — Ngôn ngữ hiển thị:** Radio `Tiếng Việt` / `English` (endonym chuẩn, không emoji cờ, áp dụng tức thì không cần khởi động lại, lưu vào `localStorage`, mặc định lần đầu theo ngôn ngữ hệ điều hành).
+   - Nút *Khôi phục mặc định* đặt lại các tùy chọn về mặc định nhưng giữ nguyên ngôn ngữ người dùng đã chọn (`ST-04`).
 2. **Cân bằng Âm lượng (Loudness & Gain):**
    - Mức âm lượng mục tiêu mặc định: Radio chọn giữa `89.0 dB SPL (Khuyến nghị chuẩn ReplayGain)` và `96.0 dB SPL (Âm lượng lớn)`.
-   - Phương thức chuẩn hóa mặc định cho MP3: Radio chọn giữa `Lossless MP3 Frame Gain (MP3Gain style)` và `ReplayGain Metadata Tagging`.
-   - Cảnh báo vỡ tiếng: Checkbox bật cảnh báo khi dự báo True Peak vượt `0.0 dBTP`.
-3. **Quy tắc Thẻ & Tên tệp (Tag & Filename Rules):**
-   - Mẫu đổi tên mặc định (ví dụ: `%track% - %artist% - %title%`).
-   - Tùy chọn chuẩn hóa chữ: Title Case, UPPERCASE, giữ nguyên.
-4. **Phím tắt (Shortcuts):** Bảng xem và tùy biến phím tắt.
+   - Bảo vệ vỡ tiếng và chế độ lưu tự động.
+3. **Phím tắt (Shortcuts):** Bảng tra cứu phím tắt bàn phím.
 
 ### 3.2. Nhóm 2: Thông tin & Hỗ trợ (Information & Support)
-5. **Cập nhật (Updates):**
-   - Tab độc lập, hiển thị phiên bản hiện tại, nút *Kiểm tra bản cập nhật mới* từ GitHub Releases, và trạng thái tải/cài đặt tự động.
-6. **Giới thiệu (About):**
-   - Icon ứng dụng VXmp3, tên ứng dụng, phiên bản chính thức, tác giả Bùi Việt Linh, link GitHub repository, công nghệ nền tảng (Tauri v2, Rust, React, `lofty`, `symphonia`, `ebur128`).
-7. **Ủng hộ tác giả (Support Author):**
+4. **Cập nhật (Updates — `AU-01…AU-16`):**
+   - Tab độc lập đồng bộ chung một controller (`useAppUpdater`) với thẻ thông báo góc dưới phải (`bottom-5 right-5`, có CTA trực tiếp `Cập nhật & khởi động lại` / `Update & restart`).
+5. **Giới thiệu (About — `AM-01…AM-14`):**
+   - Tab About trong Settings hiển thị icon ứng dụng VXmp3, phiên bản chính thức, tác giả `Bùi Việt Linh`, link `https://github.com/linhbv94/VXmp3`, tóm tắt công dụng thực tế và công nghệ nền tảng.
+   - Trên macOS menubar, mục `About VXmp3` mở hộp thoại native About chuẩn của hệ điều hành (`AboutMetadataBuilder`) với tác giả `Bùi Việt Linh` và link GitHub thực tế.
+6. **Ủng hộ tác giả (Support Author):**
    - Menu cuối cùng của sidebar với icon `Coffee` màu Amber ấm áp.
-   - Nội dung tối giản: Lời cảm ơn chân thành và **card mã QR VietQR (Vietcombank) nền trắng sắc nét đặt ở vị trí trung tâm**, tối ưu để quét trực tiếp từ app ngân hàng trên điện thoại (loại bỏ thông tin số tài khoản và nút copy STK rườm rà).
+   - Nội dung tối giản: Lời cảm ơn chân thành và **card mã QR VietQR nền trắng sắc nét đặt ở vị trí trung tâm** từ asset nội bộ (loại bỏ thông tin số tài khoản và nút copy STK rườm rà).
 
 ---
 
@@ -193,3 +194,19 @@ Toolbar 32px: tâm control native trùng tâm toolbar tại y=15.5pt từ đỉn
 ## Icon ứng dụng — 2026-10-27
 
 Bản1.0.4 dùng bộ icon mới từ [zicons](../../../_summary/zicons/README.md), prefix `ivxmp3`: ảnh nốt nhạc/bộ chỉnh âm cho VXmp3; ảnh xếp lớp/bộ lọc cho VXPhotos. Mỗi app chỉ dùng bộ riêng tương ứng. macOS dùng ICNS từ nguồn `_icns.png`; Windows dùng ICO7kích thước từ `_trans.png`. Native assets được theo dõi trong `src-tauri/icons/`. Giữ tên app, appID và updater key; không thay engine hoặc hành vi chỉnh sửa file. QA release phải đối chiếu ICNS trong cả DMG/archive cập nhật và ICO resources của executable Windows với source, không dùng cache Dock/Explorer để kết luận package.
+
+
+## Feedback20261029 — Settings component dùng chung
+
+- Căn cứ: [feedback user](../../../_summary/feedback.md) và [Settings contract](../../../_summary/standard_docs/settings_standards.md). Title VXabc Settings không icon; commonvisual/copy lấy VXMedia.
+- Source dùng lại: [canonical React](../../../_summary/standard_codes/settings_ui/settings_ui.tsx), vendorlocal `src/components/shared/settings_ui.tsx` + CSS + SHAmanifest (Clean ở desktop/src); không runtimeimport sibling.
+- Windowapp dùng shell672×560, header/footer56/sidebar192/body24; maxheight theo viewport. General chỉ2sectionTheme→Language, chỉcapability thật. Updates/About/Support dùngcomponent; version/repo/description/icon/QR làmetadata riêng, tabnghiệpvụ vàconfig/updaterguards giữadapter hiệncó.
+- Nghiệmthu riêng: commoncopy/geometry vi-en, theme/localeapply+readback, radio/tabkeyboard/focustrap/Escape, body cuộn/footerkhôngche; native/Windows/packaged/E2E phải ghi evidence, build/hashPASSkhông tựđạt. About native thamchiếuSearch, khác AboutSettings.
+
+## Cập nhật Feedback 2026-10-29 (Anti UI)
+- Titlebar Windows: Hiển thị SVG Volume2 + tên app 'VXmp3' bên trái cạnh menu Tệp/Chỉnh sửa/Xem/Công cụ/Trợ giúp; cụm system min/max/close bên phải sau nút Settings gear.
+
+
+
+### About native — đính chính 2026-10-30
+Theo hợp đồng menu/About root: PNG trong suốt512×512 riêng app (không Dock squircle/default32), layout AppKit theo Search. Credits: Bùi Việt Linh → mô tả vi/en → GitHub URL; footer © 2026 Bùi Việt Linh. All rights reserved. Giữ version thật, không lặp build version. Cần QA bundle/native mới; không coi cargo check là visual PASS.

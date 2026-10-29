@@ -1,0 +1,41 @@
+{
+  "changed_count": 17,
+  "unchanged_count": 9,
+  "total": 26,
+  "failed_count": 0,
+  "limited_count": 0,
+  "undo_byte_exact_all_26": true,
+  "date": "2026-10-14",
+  "rust_tests_passed": 20,
+  "native_platform": "macOS Apple Silicon",
+  "native_measure_count": 26,
+  "native_after_gain_db_range": [
+    88.4,
+    89.7
+  ],
+  "native_selected_gain_db": [
+    97.2,
+    89.6
+  ],
+  "selected_undo_byte_exact": true,
+  "native_loading_seen": true,
+  "windows_runtime_verified": false,
+  "published": false,
+  "source_sha256": {
+    "src/App.tsx": "41a9571ad2d224ababf3e950ee64a10374ce5c0c154419db0d4ad72acf231f7a",
+    "src/components/TrackTable.tsx": "c62c32e607a4cbbfa77807d92dc82c4e0201350da93084012dd4420241316830",
+    "src/components/ControlBar.tsx": "416ff60338ce68e98a2bb1483b4f8cee1498049a94fe5d39e011b3cd498a7932",
+    "src/components/db_level_cell.tsx": "b105103c487c45bb4a5e7cb22627b275ae37f70c85b5824b045a0d1ebbd6215d",
+    "src/types/audio_progress.ts": "1eeff58f36392b8287fb82a49b499a7c621b53a4ca4525dcb9e3c5e4b5d0da1d",
+    "src/index.css": "b347134a0d1dccea95324beb34d08932ac80c99edb69275f084d3d244c1deeea",
+    "src-tauri/src/audio_core.rs": "83732b7800763d1f7b5fafe834d04d97c10ff52bfd6f95709c4051d562c55032",
+    "src-tauri/src/transaction.rs": "3c321e6223db3565500adf0526ae2dfa9bfea6289aefee46c2a2e7e34168cd2f",
+    "src-tauri/src/regression_tests.rs": "eaebd50d4dc0c9f752642eb2497c02611af2743db4fcf83e52595ff77980d5e5"
+  },
+  "turn_closed_by_user": true,
+  "final_bundle_build": "passed",
+  "final_native_preview_number_verified": true,
+  "final_native_measure_completed": 26,
+  "test_music_restored_to_baseline": true,
+  "recent_folders_implemented": false
+}

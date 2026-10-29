@@ -1,12 +1,12 @@
 {
   "name": "vxmp3",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "VXmp3 — Tiện ích desktop xử lý thẻ nhạc hàng loạt và cân bằng âm lượng tự nhiên không suy hao chất lượng.",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node scripts/check_settings_ui.mjs && tsc && vite build",
     "preview": "vite preview",
     "tauri": "node scripts/tauri_sdk.mjs"
   },
@@ -14,7 +14,7 @@
     "@tauri-apps/api": "^2.12.1",
     "@tauri-apps/plugin-opener": "^2.0.0",
     "@tauri-apps/plugin-process": "^2.4.0",
-    "@tauri-apps/plugin-updater": "^2.13.1",
+    "@tauri-apps/plugin-updater": "^2.14.1",
     "lucide-react": "^1.52.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

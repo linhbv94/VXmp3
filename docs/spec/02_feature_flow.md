@@ -205,7 +205,7 @@ Dòng Tín hiệu Âm thanh (Audio Stream)
 
 ## 4. Quy trình Ghi Two-Phase Atomic Commit & Nhật ký Hoàn tác
 
-Nhằm đảm bảo an toàn dữ liệu tuyệt đối cho người dùng zTools, quy trình ghi tệp tuân thủ các bước sau:
+Nhằm đảm bảo an toàn dữ liệu tuyệt đối cho người dùng VXUtilities, quy trình ghi tệp tuân thủ các bước sau:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐

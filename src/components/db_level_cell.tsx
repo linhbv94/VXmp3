@@ -1,22 +1,24 @@
 import { TrackAudioProgress } from '../types/audio_progress';
+import { Language, t } from '../i18n/app_translations';
 
-export function DbLevelCell({ value, progress, target = false }: {
-  value?: number; progress?: TrackAudioProgress; target?: boolean;
+export function DbLevelCell({ value, progress, target = false, language = 'vi' }: {
+  value?: number; progress?: TrackAudioProgress; target?: boolean; language?: Language;
 }) {
+  const i18n = t(language);
   const running = progress?.status === 'running';
   const displayedValue = running && !target ? progress.preview_db ?? value : value;
   const queued = progress?.status === 'queued';
   const failed = progress?.status === 'failed';
   const limited = progress?.status === 'limited';
-  const terminalLabel = failed ? 'Lỗi' : limited ? 'Giới hạn' : progress?.status === 'unchanged' ? 'Không đổi'
-    : progress?.status === 'skipped' ? 'Bỏ qua' : progress?.status === 'changed' ? 'Đã chỉnh' : '';
+  const terminalLabel = failed ? i18n.db_status_error : limited ? i18n.db_status_limited : progress?.status === 'unchanged' ? i18n.db_status_unchanged
+    : progress?.status === 'skipped' ? i18n.db_status_skipped : progress?.status === 'changed' ? i18n.db_status_changed : '';
   const fill = running ? (progress.percent == null ? undefined : progress.percent * 100)
     : value == null ? 0 : Math.max(0, Math.min(100, (value - 60) * 2));
-  const detail = progress?.message || (running ? `${progress.stage}${!target && progress.preview_db != null ? ' · dB tạm tính đến phần đã quét' : ''}${progress.percent != null ? ` · ${Math.round(progress.percent * 100)}%` : ''}`
-    : queued ? 'Chờ xử lý' : target ? 'Mức loudness mục tiêu; gain MP3 theo nấc khoảng 1,5 dB' : 'Loudness toàn bài, dB quy ước = 107 + LUFS');
+  const detail = progress?.message || (running ? `${progress.stage}${!target && progress.preview_db != null ? (language === 'en' ? ' · provisional dB' : ' · dB tạm tính đến phần đã quét') : ''}${progress.percent != null ? ` · ${Math.round(progress.percent * 100)}%` : ''}`
+    : queued ? i18n.db_status_queued : target ? (language === 'en' ? 'Target loudness; MP3 gain steps ~1.5 dB' : 'Mức loudness mục tiêu; gain MP3 theo nấc khoảng 1,5 dB') : (language === 'en' ? 'Track loudness, dB SPL = 107 + LUFS' : 'Loudness toàn bài, dB quy ước = 107 + LUFS'));
   return (
     <div className="flex flex-col items-end gap-0.5" title={detail}>
-      <div role={running ? 'progressbar' : undefined} aria-label={`${target ? 'Cân bằng' : 'Đo'} dB: ${progress?.stage || 'Mức âm lượng'}`}
+      <div role={running ? 'progressbar' : undefined} aria-label={`${target ? i18n.batch_gain_prefix : i18n.batch_measure_prefix}: ${progress?.stage || 'dB'}`}
         aria-valuemin={running ? 0 : undefined} aria-valuemax={running ? 100 : undefined}
         aria-valuenow={running && progress.percent != null ? Math.round(progress.percent * 100) : undefined}
         aria-valuetext={detail}
@@ -30,7 +32,7 @@ export function DbLevelCell({ value, progress, target = false }: {
         {running && <span aria-hidden="true" className="absolute right-0 top-0 h-full w-0.5 bg-current opacity-70 animate-pulse" />}
       </div>
       {(running || queued || terminalLabel) && <span className={`text-[8px] leading-[8px] font-sans truncate max-w-[72px] ${failed ? 'text-rose-500' : limited ? 'text-amber-500' : 'text-slate-500 dark:text-slate-400'}`}>
-        {running ? progress.percent == null ? 'Đang xử lý' : `${Math.round(progress.percent * 100)}%` : queued ? 'Chờ' : terminalLabel}
+        {running ? progress.percent == null ? i18n.db_status_processing : `${Math.round(progress.percent * 100)}%` : queued ? i18n.db_status_queued : terminalLabel}
       </span>}
     </div>
   );

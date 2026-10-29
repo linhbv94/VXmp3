@@ -4,7 +4,7 @@ Windows x64 và macOS Apple Silicon/Intel: [Tải bản1.0.2](https://github.com
 
 
 > **Bộ công cụ xử lý siêu dữ liệu và chuẩn hóa âm lượng nhạc cá nhân siêu nhẹ, đa nền tảng (Windows & macOS).**  
-> Thành viên trong hệ sinh thái [VXUtilities](../_summary/master_overview.md) thuộc `zTools`.
+> Thành viên trong hệ sinh thái [VXUtilities](../_summary/master_overview.md).
 
 ---
 
@@ -16,7 +16,7 @@ Windows x64 và macOS Apple Silicon/Intel: [Tải bản1.0.2](https://github.com
    - **Lossless MP3 Direct Frame Gain:** Can thiệp trực tiếp vào trường `global_gain` của từng khung dữ liệu MP3 (MPEG audio frame) theo thuật toán MP3Gain. Thay đổi âm lượng theo bước 1.5 dB mà **không giải mã PCM và nén lại**, bảo toàn 100% chất lượng âm thanh gốc, có thể hoàn tác (reversible) và tương thích hoàn toàn với mọi đầu phát phần cứng/loa xe hơi.
    - **ReplayGain 2.0 / EBU R128 Tagging:** Đo lường độ lớn âm thanh theo chuẩn công nghiệp (ITU-R BS.1770-4 / EBU R128) và ghi thẻ ReplayGain cho mọi định dạng hiện đại (FLAC, M4A/AAC, OGG, Opus, WAV, MP3).
 
-Ứng dụng tuân thủ nghiêm ngặt tiêu chuẩn giao diện [master_theme.md](../_summary/master_theme.md), quy chuẩn desktop UI [desktop_ui_standards.md](../.agents/desktop_ui_standards.md) và tôn chỉ an toàn dữ liệu của zTools.
+Ứng dụng tuân thủ nghiêm ngặt tiêu chuẩn giao diện [master_theme.md](../_summary/standard_docs/master_theme.md), quy chuẩn desktop UI [desktop_ui_standards.md](../_summary/standard_docs/desktop_ui_standards.md) và tôn chỉ an toàn dữ liệu của VXUtilities.
 
 ---
 
@@ -47,7 +47,7 @@ Windows x64 và macOS Apple Silicon/Intel: [Tải bản1.0.2](https://github.com
 
 ## 4. Cấu trúc Tài liệu Đặc tả (Documentation Suite)
 
-Bộ tài liệu đặc tả đầy đủ được tổ chức trong thư mục `docs/spec/` tuân theo chuẩn Product OS zTools:
+Bộ tài liệu đặc tả đầy đủ được tổ chức trong thư mục `docs/spec/` tuân theo chuẩn Product OS VXUtilities:
 
 - [vx_mp3_scope_v1_0.md](vx_mp3_scope_v1_0.md): Tài liệu phạm vi sản phẩm v1.0 (Product Scope & Use Cases).
 - [00_system_overview.md](docs/spec/00_system_overview.md): Tổng quan kiến trúc hệ thống, ma trận độ khó kỹ thuật và giải pháp cốt lõi (`_spec0_system`).

@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-14",
+  "platform": "macOS Apple Silicon",
+  "benchmark_file": "BEcause - Dreamcatcher.mp3",
+  "benchmark_read_only": true,
+  "debug_ms": 29924,
+  "release_ms": 442,
+  "debug_over_release_ratio": 67.7,
+  "identical_loudness_db": 97.17279302103616,
+  "identical_true_peak_dbtp": -1.125918609781849,
+  "native_release_completed": 26,
+  "user_confirmed_release_speed_ok": true,
+  "native_batch_exact_elapsed_not_recorded": true,
+  "app_relative_path": "src-tauri/target/release/bundle/macos/VXmp3.app",
+  "app_binary_sha256": "78321b39a2d6c0dcf00f2baf409b59b60298d77f72821a97706382d047c77a27",
+  "core_changed_in_this_followup": false,
+  "recent_features_preserved": true,
+  "published": false
+}

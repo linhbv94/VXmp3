@@ -4,7 +4,7 @@ pub mod transaction;
 
 use tauri::Emitter;
 #[cfg(target_os = "macos")]
-use tauri::menu::{MenuBuilder, MenuItemBuilder, SubmenuBuilder};
+use tauri::menu::{AboutMetadataBuilder, MenuBuilder, MenuItemBuilder, SubmenuBuilder};
 
 #[cfg(target_os = "macos")]
 #[allow(deprecated)]
@@ -87,6 +87,105 @@ fn sync_mac_traffic_lights(window: &tauri::WebviewWindow) {
     });
 }
 
+#[cfg(target_os = "macos")]
+fn rebuild_mac_app_menu(app: &tauri::AppHandle, lang: &str) {
+    let is_en = lang.eq_ignore_ascii_case("en");
+    let settings_label = if is_en { "Settings…" } else { "Cài đặt…" };
+    let open_folder_label = if is_en { "Open Folder…" } else { "Mở thư mục…" };
+    let save_tags_label = if is_en { "Save Tag Changes…" } else { "Lưu thay đổi thẻ…" };
+    let select_all_label = if is_en { "Select All" } else { "Chọn tất cả" };
+    let file_menu_label = if is_en { "File" } else { "Tệp" };
+    let edit_menu_label = if is_en { "Edit" } else { "Chỉnh sửa" };
+    let about_comments = if is_en {
+        "Batch audio metadata editor and lossless MP3Gain loudness normalizer."
+    } else {
+        "Tiện ích chỉnh sửa siêu dữ liệu nhạc hàng loạt và chuẩn hóa âm lượng MP3Gain không suy hao."
+    };
+    let about_credits = if is_en {
+        "Bùi Việt Linh\nBatch audio metadata editor and lossless MP3Gain loudness normalizer.\nGitHub: https://github.com/linhbv94/VXmp3"
+    } else {
+        "Bùi Việt Linh\nTiện ích chỉnh sửa siêu dữ liệu nhạc hàng loạt và chuẩn hóa âm lượng MP3Gain không suy hao.\nGitHub: https://github.com/linhbv94/VXmp3"
+    };
+
+    let build_menu = || -> tauri::Result<tauri::menu::Menu<tauri::Wry>> {
+        let mut about_builder = AboutMetadataBuilder::new()
+            .name(Some("VXmp3"))
+            .version(Some(app.package_info().version.to_string()))
+            // Empty AppKit build version prevents fallback to CFBundleVersion.
+            .short_version(Some(""))
+            .copyright(Some("© 2026 Bùi Việt Linh. All rights reserved.".to_string()))
+            .authors(Some(vec!["Bùi Việt Linh".to_string()]))
+            .comments(Some(about_comments.to_string()))
+            .credits(Some(about_credits.to_string()))
+            .website(Some("https://github.com/linhbv94/VXmp3".to_string()))
+            .website_label(Some("GitHub — VXmp3".to_string()));
+        about_builder = about_builder.icon(Some(tauri::include_image!("icons/icon.png")));
+
+        let settings_item = MenuItemBuilder::with_id("open_settings", settings_label)
+            .accelerator("CmdOrCtrl+,")
+            .build(app)?;
+
+        let app_submenu = SubmenuBuilder::new(app, "VXmp3")
+            .about(Some(about_builder.build()))
+            .separator()
+            .item(&settings_item)
+            .separator()
+            .services()
+            .separator()
+            .hide()
+            .hide_others()
+            .show_all()
+            .separator()
+            .quit()
+            .build()?;
+
+        let open_folder = MenuItemBuilder::with_id("open_folder", open_folder_label)
+            .accelerator("CmdOrCtrl+O")
+            .build(app)?;
+
+        let save_tags = MenuItemBuilder::with_id("save_tags", save_tags_label)
+            .accelerator("CmdOrCtrl+S")
+            .build(app)?;
+
+        let file_submenu = SubmenuBuilder::new(app, file_menu_label)
+            .item(&open_folder)
+            .item(&save_tags)
+            .separator()
+            .close_window()
+            .build()?;
+
+        let select_all = MenuItemBuilder::with_id("select_all", select_all_label)
+            .accelerator("CmdOrCtrl+A")
+            .build(app)?;
+
+        let edit_submenu = SubmenuBuilder::new(app, edit_menu_label)
+            .item(&select_all)
+            .separator()
+            .cut()
+            .copy()
+            .paste()
+            .build()?;
+
+        MenuBuilder::new(app)
+            .item(&app_submenu)
+            .item(&file_submenu)
+            .item(&edit_submenu)
+            .build()
+    };
+
+    if let Ok(menu) = build_menu() {
+        let _ = app.set_menu(menu);
+    }
+}
+
+#[tauri::command]
+fn set_app_language(app: tauri::AppHandle, lang: String) {
+    #[cfg(target_os = "macos")]
+    rebuild_mac_app_menu(&app, &lang);
+    #[cfg(not(target_os = "macos"))]
+    let _ = (app, lang);
+}
+
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! Welcome to VXmp3.", name)
@@ -100,6 +199,7 @@ pub fn run() {
         .plugin(tauri_plugin_updater::Builder::new().build())
         .invoke_handler(tauri::generate_handler![
             greet,
+            set_app_language,
             metadata::pick_directory,
             metadata::scan_audio_directory,
             metadata::apply_batch_tags,
@@ -113,60 +213,7 @@ pub fn run() {
         .setup(|app| {
             #[cfg(target_os = "macos")]
             {
-                let about_item = MenuItemBuilder::with_id("open_about", "Giới thiệu VXmp3...").build(app)?;
-
-                let settings_item = MenuItemBuilder::with_id("open_settings", "Cài đặt...")
-                    .accelerator("CmdOrCtrl+,")
-                    .build(app)?;
-
-                let app_submenu = SubmenuBuilder::new(app, "VXmp3")
-                    .item(&about_item)
-                    .separator()
-                    .item(&settings_item)
-                    .separator()
-                    .services()
-                    .separator()
-                    .hide()
-                    .hide_others()
-                    .show_all()
-                    .separator()
-                    .quit()
-                    .build()?;
-
-                let open_folder = MenuItemBuilder::with_id("open_folder", "Mở thư mục...")
-                    .accelerator("CmdOrCtrl+O")
-                    .build(app)?;
-
-                let save_tags = MenuItemBuilder::with_id("save_tags", "Lưu thay đổi thẻ...")
-                    .accelerator("CmdOrCtrl+S")
-                    .build(app)?;
-
-                let file_submenu = SubmenuBuilder::new(app, "File")
-                    .item(&open_folder)
-                    .item(&save_tags)
-                    .separator()
-                    .close_window()
-                    .build()?;
-
-                let select_all = MenuItemBuilder::with_id("select_all", "Chọn tất cả")
-                    .accelerator("CmdOrCtrl+A")
-                    .build(app)?;
-
-                let edit_submenu = SubmenuBuilder::new(app, "Edit")
-                    .item(&select_all)
-                    .separator()
-                    .cut()
-                    .copy()
-                    .paste()
-                    .build()?;
-
-                let menu = MenuBuilder::new(app)
-                    .item(&app_submenu)
-                    .item(&file_submenu)
-                    .item(&edit_submenu)
-                    .build()?;
-
-                let _ = app.set_menu(menu);
+                rebuild_mac_app_menu(app.handle(), "vi");
 
                 use tauri::Manager;
                 if let Some(main_win) = app.get_webview_window("main") {

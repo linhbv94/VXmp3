@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-14",
+  "platform": "macOS Apple Silicon",
+  "rust_tests_passed": 14,
+  "frontend_build": "passed",
+  "local_bundle": "src-tauri/target/release/bundle/macos/VXmp3.app",
+  "native_checks": [
+    "single_click_title_artist",
+    "tab_to_album",
+    "cmd_s_focused_inline",
+    "utf8_metadata_restart_scan",
+    "cmd_a_list_3_tracks",
+    "cmd_a_input_text",
+    "batch_2_mp3_with_single_selection",
+    "remeasure_unchanged_after_gain",
+    "undo_gain_2_files"
+  ],
+  "native_db_before": {
+    "mono": 79.1,
+    "stereo": 82.1,
+    "wav": 71.1
+  },
+  "native_db_after": {
+    "mono": 89.6,
+    "stereo": 89.6,
+    "wav": 71.1
+  },
+  "native_db_after_undo": {
+    "mono": 79.1,
+    "stereo": 82.1,
+    "wav": 71.1
+  },
+  "windows_verified": false,
+  "published": false,
+  "source_sha256": {
+    "src/App.tsx": "ff2f3c0607e749725453de488d08921c1327c0b134127033265a2013f8b67658",
+    "src/components/TrackTable.tsx": "51bd064dc821723760631e60eb67154b8c6d007c3634e6c2a27ccf721c96aea9",
+    "src/components/ControlBar.tsx": "2ec88558caed64835c838bf27e1c2bb7333876b39aa934d5a3a53a36867f7961",
+    "src/components/Inspector.tsx": "ef6e5d43fcdcd4e5dbe5d907804f53bb97c543ab8b2b519b22febd7159a8b9b6",
+    "src/types/index.ts": "5e70a97cb134f418573f8493e49bf9f5578a0c22adbbe72359f08578bc6119be",
+    "src-tauri/src/metadata.rs": "41740048d433754b3cb6b7c6f183d8ff7dabba4ef6e2eae8dc01fe7bfebbdae1",
+    "src-tauri/src/audio_core.rs": "c9406089eaf11978ad399efdf73296e91b58879fa3c3ce474907b14c291971b9",
+    "src-tauri/src/transaction.rs": "3b2af2788f51f0709b1e42d19914bfe1e765193e9884593a18408694c9cff9b5",
+    "src-tauri/src/lib.rs": "c54ccba0654d5441015ba1112b8ff5de59fa7daa157065d4f3204b639d0900eb",
+    "src-tauri/src/regression_tests.rs": "388da025b6f436992baf45917b43efd1aec2e2d2d656806110c252ec164a2adb",
+    "src-tauri/Cargo.toml": "b3427370446882bed20d494637d5203b6696237f85628d523ee3168fb0cfa212",
+    "src-tauri/Cargo.lock": "cd349166c4840a6d16f701ca5b63f2fa8dda474418a87e276238799e10d819b7"
+  }
+}

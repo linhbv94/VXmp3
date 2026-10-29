@@ -9,6 +9,7 @@ import packageInfo from '../../package.json';
 export const appVersion = packageInfo.version;
 const controller = createUpdateController({
   enabled: isTauri() && !import.meta.env.DEV && getCurrentWindow().label === 'main',
+  currentVersion: appVersion,
   check,
   relaunch,
   beforeInstall:async()=>{if(!window.dispatchEvent(new Event('vxmp3-before-update',{cancelable:true})))throw new Error('Hãy lưu thay đổi và đợi thao tác hiện tại hoàn tất trước khi cập nhật.');await invoke('prepare_app_update');},

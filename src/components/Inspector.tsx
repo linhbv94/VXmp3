@@ -8,6 +8,7 @@ import {
   FileText
 } from 'lucide-react';
 import { AudioTrack, TrackMetadata } from '../types';
+import { Language, t } from '../i18n/app_translations';
 
 interface InspectorProps {
   selectedTracks: AudioTrack[];
@@ -15,6 +16,7 @@ interface InspectorProps {
   onFieldChange: (field: keyof TrackMetadata, value: any) => void;
   onCoverArtChange: (file: File) => void;
   onRemoveCoverArt: () => void;
+  language?: Language;
 }
 
 export const Inspector: React.FC<InspectorProps> = ({
@@ -23,16 +25,18 @@ export const Inspector: React.FC<InspectorProps> = ({
   onFieldChange,
   onCoverArtChange,
   onRemoveCoverArt,
+  language = 'vi',
 }) => {
+  const i18n = t(language);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (selectedTracks.length === 0) {
     return (
       <aside className="w-80 shrink-0 border-l border-slate-200 dark:border-white/10 glass-panel p-6 flex flex-col items-center justify-center text-center text-slate-500 select-none">
         <Music size={40} className="mb-3 text-slate-600 stroke-[1.5]" />
-        <p className="text-sm font-medium">Chưa chọn bài hát nào</p>
+        <p className="text-sm font-medium">{i18n.inspector_empty_title}</p>
         <p className="text-xs text-slate-600 mt-1">
-          Chọn một hoặc nhiều bài hát trên bảng để xem và chỉnh sửa thông tin chi tiết.
+          {i18n.inspector_empty_desc}
         </p>
       </aside>
     );
@@ -82,13 +86,13 @@ export const Inspector: React.FC<InspectorProps> = ({
             <FileText size={16} className="text-cyan-400" />
           )}
           <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
-            {isMulti ? `Đang chọn (${selectedTracks.length} bài)` : 'Chi tiết bài hát'}
+            {isMulti ? i18n.inspector_multi_title.replace('{count}', String(selectedTracks.length)) : i18n.inspector_single_title}
           </h2>
         </div>
 
         {pendingPatch && Object.keys(pendingPatch).length > 0 && (
           <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-medium">
-            Chưa lưu
+            {i18n.inspector_unsaved}
           </span>
         )}
       </div>
@@ -98,7 +102,7 @@ export const Inspector: React.FC<InspectorProps> = ({
         {/* Khung Cover Art (Ảnh bìa) */}
         <div>
           <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1.5">
-            Ảnh bìa Album (Cover Art)
+            {i18n.inspector_cover_label}
           </label>
           <div
             onDragOver={(e) => e.preventDefault()}
@@ -116,14 +120,14 @@ export const Inspector: React.FC<InspectorProps> = ({
                   <button
                     onClick={() => fileInputRef.current?.click()}
                     className="p-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-400 transition-all cursor-pointer shadow-md"
-                    title="Thay thế ảnh bìa"
+                    title={i18n.inspector_cover_replace}
                   >
                     <Upload size={14} />
                   </button>
                   <button
                     onClick={onRemoveCoverArt}
                     className="p-2 rounded-lg bg-rose-500 text-white hover:bg-rose-400 transition-all cursor-pointer shadow-md"
-                    title="Gỡ bỏ ảnh bìa"
+                    title={i18n.inspector_cover_remove}
                   >
                     <Trash2 size={14} />
                   </button>
@@ -136,9 +140,9 @@ export const Inspector: React.FC<InspectorProps> = ({
               >
                 <ImageIcon size={32} className="text-slate-600 mb-2 group-hover:text-cyan-400 transition-colors" />
                 <p className="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-cyan-300">
-                  {isMulti ? 'Kéo thả để nhúng hàng loạt' : 'Kéo thả ảnh hoặc bấm để chọn'}
+                  {isMulti ? i18n.inspector_cover_drop_multi : i18n.inspector_cover_drop_single}
                 </p>
-                <p className="text-[10px] text-slate-600 mt-0.5">JPG, PNG (Tối ưu tự động)</p>
+                <p className="text-[10px] text-slate-600 mt-0.5">{i18n.inspector_cover_hint}</p>
               </div>
             )}
             <input
@@ -157,13 +161,13 @@ export const Inspector: React.FC<InspectorProps> = ({
           {!isMulti && (
             <div>
               <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                Tiêu đề (Title)
+                {i18n.field_title}
               </label>
               <input
                 type="text"
                 value={getValue('title')}
                 onChange={(e) => onFieldChange('title', e.target.value)}
-                placeholder="Nhập tên bài hát..."
+                placeholder={i18n.field_title_placeholder}
                 className="w-full px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
               />
             </div>
@@ -172,13 +176,13 @@ export const Inspector: React.FC<InspectorProps> = ({
           {/* Nghệ sĩ */}
           <div>
             <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-              Nghệ sĩ trình bày (Artist)
+              {i18n.field_artist}
             </label>
             <input
               type="text"
               value={getValue('artist')}
               onChange={(e) => onFieldChange('artist', e.target.value)}
-              placeholder={isMulti ? 'Nhiều giá trị (Nhập để sửa đồng loạt)' : 'Nhập tên nghệ sĩ...'}
+              placeholder={isMulti ? i18n.field_multi_placeholder : i18n.field_artist_placeholder}
               className="w-full px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
           </div>
@@ -186,13 +190,13 @@ export const Inspector: React.FC<InspectorProps> = ({
           {/* Album */}
           <div>
             <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-              Tên Album
+              {i18n.field_album}
             </label>
             <input
               type="text"
               value={getValue('album')}
               onChange={(e) => onFieldChange('album', e.target.value)}
-              placeholder={isMulti ? 'Nhiều giá trị (Nhập để sửa đồng loạt)' : 'Nhập tên album...'}
+              placeholder={isMulti ? i18n.field_multi_placeholder : i18n.field_album_placeholder}
               className="w-full px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
           </div>
@@ -200,13 +204,13 @@ export const Inspector: React.FC<InspectorProps> = ({
           {/* Nghệ sĩ Album */}
           <div>
             <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-              Nghệ sĩ Album (Album Artist)
+              {i18n.field_album_artist}
             </label>
             <input
               type="text"
               value={getValue('album_artist')}
               onChange={(e) => onFieldChange('album_artist', e.target.value)}
-              placeholder="Nhập nghệ sĩ album..."
+              placeholder={i18n.field_album_artist_placeholder}
               className="w-full px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
           </div>
@@ -215,7 +219,7 @@ export const Inspector: React.FC<InspectorProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <div>
               <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                Năm (Year)
+                {i18n.field_year}
               </label>
               <input
                 type="number"
@@ -227,7 +231,7 @@ export const Inspector: React.FC<InspectorProps> = ({
             </div>
             <div>
               <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                Thể loại (Genre)
+                {i18n.field_genre}
               </label>
               <input
                 type="text"
@@ -244,7 +248,7 @@ export const Inspector: React.FC<InspectorProps> = ({
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                  Số thứ tự (#)
+                  {i18n.field_track_number}
                 </label>
                 <input
                   type="number"
@@ -256,7 +260,7 @@ export const Inspector: React.FC<InspectorProps> = ({
               </div>
               <div>
                 <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-                  Tổng số bài
+                  {i18n.field_total_tracks}
                 </label>
                 <input
                   type="number"
@@ -272,13 +276,13 @@ export const Inspector: React.FC<InspectorProps> = ({
           {/* Ghi chú (Comment) */}
           <div>
             <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
-              Ghi chú (Comment)
+              {i18n.field_comment}
             </label>
             <textarea
               rows={2}
               value={getValue('comment')}
               onChange={(e) => onFieldChange('comment', e.target.value)}
-              placeholder="Ghi chú phiên bản, chất lượng..."
+              placeholder={i18n.field_comment_placeholder}
               className="w-full px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors resize-none"
             />
           </div>
