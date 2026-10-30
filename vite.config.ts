@@ -8,7 +8,7 @@ export default defineConfig({
   base: './',
   clearScreen: false,
   server: {
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 1423,
     strictPort: true,
     watch: {

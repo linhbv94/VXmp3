@@ -1,6 +1,6 @@
 {
   "name": "vxmp3",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "VXmp3 — Tiện ích desktop xử lý thẻ nhạc hàng loạt và cân bằng âm lượng tự nhiên không suy hao chất lượng.",
   "main": "index.js",
   "type": "module",
@@ -27,6 +27,6 @@
     "@vitejs/plugin-react": "^6.1.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vite": "^8.3.2"
+    "vite": "^8.3.5"
   }
 }
